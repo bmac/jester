@@ -7,7 +7,7 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "test": "vitest",
-    "e2e": "cucumber-js --import features/support/*.ts --loader ts-node/esm",
+    "e2e": "cucumber-js --import features/support/steps.ts --loader ts-node/esm",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc"
@@ -41,5 +41,11 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+    "ts-node": {
+  "transpileOnly": true,
+  "compilerOptions": {
+    "module": "esnext"
   }
+}
 }
