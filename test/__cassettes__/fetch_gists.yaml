@@ -1,0 +1,50 @@
+- request:
+    url: https://api.github.com/graphql
+    method: POST
+    headers:
+      accept: application/vnd.github.v3+json
+      accept-encoding: gzip,deflate,br
+      authorization: masked
+      connection: close
+      content-length: "330"
+      content-type: application/json; charset=utf-8
+      host: api.github.com
+      user-agent: octokit-graphql.js/0.0.0-development Node.js/21
+    body: '{"query":"\n{\n  user(login: \"octocat\") {\n    gists(first: 100)
+      {\n      nodes
+      {\n        id\n        name\n        description\n        stargazerCount\n        url\n        createdAt\n        updatedAt\n        files
+      {\n          name\n          language
+      {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n"}'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      access-control-allow-origin: "*"
+      access-control-expose-headers: ETag, Link, Location, Retry-After, X-GitHub-OTP,
+        X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used,
+        X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type,
+        X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset
+      connection: close
+      content-encoding: gzip
+      content-security-policy: default-src 'none'
+      content-type: application/json; charset=utf-8
+      date: Sun, 26 May 2024 19:04:56 GMT
+      github-authentication-token-expiration: 2024-08-24 18:24:08 UTC
+      referrer-policy: origin-when-cross-origin, strict-origin-when-cross-origin
+      server: GitHub.com
+      strict-transport-security: max-age=31536000; includeSubdomains; preload
+      transfer-encoding: chunked
+      vary: Accept-Encoding, Accept, X-Requested-With
+      x-accepted-oauth-scopes: repo
+      x-content-type-options: nosniff
+      x-frame-options: deny
+      x-github-media-type: github.v3; format=json
+      x-github-request-id: F303:2E51EA:43320F:6DE599:665387D7
+      x-ratelimit-limit: "5000"
+      x-ratelimit-remaining: "4950"
+      x-ratelimit-reset: "1716751674"
+      x-ratelimit-resource: graphql
+      x-ratelimit-used: "50"
+      x-xss-protection: "0"
+    body: H4sIAAAAAAAAA7WVbW/aMBCA/0rnfSXUPjsvWNqHqnQa08IETVfBVFUmCUkgJFVe1JaK/75LikpLwqimDgkRYefs5/Hd+Yl4qlBEPpEy97PqN4jyIq8ektTz8eH3E4k8IondHxljiNde/+JhuBjc2+vBF9IhiVr5OMqYAZQD/oEvuVl0V0RpQmRSxnGH5IXKArX2s/O0TAoieYeUWYxvhUVxl8vT02rNbhAVYTnruunqdBfNzXxV+N4ZvkWAMqZRSwNwaE8KQzJjiguWd4jwMgW4xkCjPYfpEqiEeso8irco2+0WPi7o5jgUqyQoVYAMSPzMcv6ZbDY3m04r+FIMnT3wnqV/IPg2Wiu47lCQgkudt4MzDVg1hZtS9P4D+OjtieNWxftOHN5x4ttofwHXJbcOgTNwGJd46NT8SPC13b9a24uL1+Cc6hzY+8DNo+Av0RrgjNapTiWzpKip9lJdaBSzXXdYTyI7Fx8IvnwcOi7g9xV4D3TT0M19cHKZrvwTLNtVmpxUVRwFSZpV/yTzKCgzVbWCqtQabYCbR/Nit+aeHmQHDcyKnVsSDujRNVZPYdgJoFXPbsO4w5ZmMHiG+YEd6kBX+B4OFwGzr4fLqTOgExiH08U4+tn/FWHEbUsBZVg6cz0fhOupuZhZ+qzhsUURsGP5cyBy05aJyVLb4pLWKprJVNsCHBdS0FZbeR7eLv3HW+V53TxsN3YZ+nF8wNWZsNdfVzZMo2k/WE+ubTrtj2DYv3rYuaIWZ3M+n3kWV67whCH0RrGRNlfCOCbrQOg2WcArE1U/qcuqecm89Fq8h9plYSloqizCNNMy/z6LCv+fnE0Xk+sR9qAJupsu7XWI7obhEL7GO2eGqzwOhsUNj1szjytT+Tj65i4m3/Bc0pP7NIu9T23+jl7LB1Zp6MPGRZnDUAymW5s+LF6mMeFQQwqQtG7qjTu6SqP0tt5uN6uqpaU6x+XssU61mw1+/gAOHe8PzQgAAA==
