@@ -1,0 +1,89 @@
+.cards {
+    padding: 30px;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}
+
+.card {
+    min-height: 400px;
+    max-width: 340px;
+    width: 100%;
+    background-color: #f5f5dc;
+    background: linear-gradient(to bottom, #f2f2e6, #f5f5dc);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+}
+
+
+
+.cornerTopLeft {
+    font-family: cursive, sans-serif;
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    top: 5px;
+    left: 3px;
+    color: #333;
+    writing-mode: tb;
+    text-orientation: upright;
+    letter-spacing: -10px;
+    line-height: 1;
+}
+
+.cornerBottomRight {
+    font-family: cursive, sans-serif;
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    bottom: 5px;
+    right: 3px;
+    transform: rotate(180deg);
+    color: #333;
+    writing-mode: tb;
+    text-orientation: upright;
+    letter-spacing: -10px;
+    line-height: 1;
+}
+
+
+.content {
+    border-radius: 10px;
+    border: 1px solid black;
+    flex: 1;
+    width: 100%;
+    color: black;
+    padding: 15px;
+    box-sizing: border-box;
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content a {
+    font-family: monospace;
+    color: #800000;
+}
+
+.content a:hover {
+    color: #A52A2A;
+}
+
+.code {
+    overflow: hidden;
+}
+
+.diamonds {
+    color: #a52a2a;
+}

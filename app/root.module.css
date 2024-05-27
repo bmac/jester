@@ -1,0 +1,77 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
+    color: #f5f5dc;
+    color: #dcdcdc;
+    color: #fafad2;
+    margin: 0;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+a {
+    color: #fafad2;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    height: calc(60px +(constant(safe-area-inset-top))* .8) !important;
+    height: calc(60px +(env(safe-area-inset-top))* .8) !important;
+    z-index: 99;
+    transition: all .3s ease;
+    background-color: #f5f5dc;
+    background-color: #333333;
+    background-color: #4f4f4f;
+    border-bottom: solid 1px rgba(0, 0, 0, .03);
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, .08);
+    padding: 6px 16px;
+    font-size: 2rem;
+
+    font-family: 'Luckiest Guy', cursive; /* or 'Playfair Display', serif */
+    font-size: 24pt;
+    color: #FFFFFF;
+    padding: 20px;
+    background: linear-gradient(to top, #800000, #402129); /* Gradient from dark red to light red */
+    border-bottom: 1px solid gold; /* Thin golden border */
+}
+
+.content {
+    margin-top: 80px;
+    /*
+    margin-top: calc(80px +(constant(safe-area-inset-top))* .8) !important; 
+    margin-top: calc(80px +(env(safe-area-inset-top))* .8) !important;
+   */
+}
+
+.background {
+    background: linear-gradient(180deg, #c62f50, #6f1025);
+  background: linear-gradient(
+    45deg, 
+    #8b0000 23%,
+    #a52a2a 23%, 
+    #a52a2a 48%, 
+    #8b0000 48%, 
+    #8b0000 73%, 
+    #a52a2a 73%,
+    #a52a2a 100%
+  );
+
+
+
+    z-index: -1;
+    position: fixed;
+    top: -550px;
+    bottom: -550px;
+    transform: translate3d(0, 0, 0);
+    left: -50px;
+    right: -50px;
+}
