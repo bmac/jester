@@ -1,4 +1,4 @@
-import { getGistsForUser } from "./githubClient";
+import { getGistsForUser } from "~/clients/githubClient";
 
 export const topGistForUser = async (username: string) => {
   const gists = await getGistsForUser(username);

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import * as gistService from "./gistService";
-import * as githubClient from "./githubClient";
-import type { Gist } from "./githubClient";
+import * as githubClient from "~/clients/githubClient";
+import type { Gist } from "~/clients/githubClient";
 
 describe("gistService", () => {
   it("should return sorted gists", async () => {
