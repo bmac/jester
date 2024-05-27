@@ -7,9 +7,10 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "test": "vitest",
-    "e2e": "cucumber-js --import features/support/steps.ts --loader ts-node/esm",
+    "e2e": "NODE_OPTIONS='--import tsx/esm' cucumber-js --import features/support/steps.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
+    "prettier": "prettier --write .",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -36,7 +37,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.2.5",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.11.0",
     "typescript": "^5.1.6",
     "vcr-test": "^1.0.9",
     "vite": "^5.1.0",
@@ -45,11 +46,5 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "ts-node": {
-    "transpileOnly": true,
-    "compilerOptions": {
-      "module": "esnext"
-    }
   }
 }
