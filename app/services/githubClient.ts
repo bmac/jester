@@ -1,19 +1,19 @@
 import { graphql } from "@octokit/graphql";
 
 export type Gist = {
-    description: string;
-    stargazerCount: number;
+  description: string;
+  stargazerCount: number;
 };
 
 export const getGistsForUser = async (username: string) => {
-    const response = await graphql<{
-        user: {
-            gists: {
-                nodes: Gist[]
-            }
-        }
-
-    }>(`
+  const response = await graphql<{
+    user: {
+      gists: {
+        nodes: Gist[];
+      };
+    };
+  }>(
+    `
 {
   user(login: "${username}") {
     gists(first: 100) {
@@ -36,12 +36,12 @@ export const getGistsForUser = async (username: string) => {
   }
 }
 `,
-        {
-            headers: {
-                authorization: `token ${process.env.GITHUB_TOKEN}`,
-            },
-        },
-    );
+    {
+      headers: {
+        authorization: `token ${process.env.GITHUB_TOKEN}`,
+      },
+    },
+  );
 
-    return response.user.gists.nodes;
+  return response.user.gists.nodes;
 };

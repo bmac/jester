@@ -7,7 +7,7 @@ installGlobals();
 
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
-    test: {
-      setupFiles: ['/test/setup.ts'],
-    },
+  test: {
+    setupFiles: ["/test/setup.ts"],
+  },
 });
