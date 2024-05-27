@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import * as gistService from './gistService';
 import * as githubClient from './githubClient';
+import type { Gist } from './githubClient';
 
 // const githubClient = {
 //     getGistsForUser: (user: string) => {
@@ -10,9 +11,9 @@ import * as githubClient from './githubClient';
 
 describe('gistService', () => {
     it('should return sorted gists', async () => {
-        const oneStarGist = { stargazerCount: 1, };
-        const threeStarGist = { stargazerCount: 3, };
-        const fiveStarGist = { stargazerCount: 5, };
+        const oneStarGist = { stargazerCount: 1, } as Gist;
+        const threeStarGist = { stargazerCount: 3, } as Gist;
+        const fiveStarGist = { stargazerCount: 5, } as Gist;
         vi.spyOn(githubClient, 'getGistsForUser').mockResolvedValue([
             threeStarGist,
             fiveStarGist,
