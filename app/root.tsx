@@ -4,10 +4,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useParams,
 } from "@remix-run/react";
-import styles from './root.module.css';
+import styles from "./root.module.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const params = useParams();
+  // const params = {};
+
   return (
     <html lang="en">
       <head>
@@ -17,13 +21,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-          <header>
-          🎭 Jester
-          </header>
-          <div className={styles.content}>
-        {children}
-          </div>
-          <div className={styles.background}  />
+        <header>
+          🎭 Jester{" "}
+          <span className={styles.subHeading}>
+            {params.username
+              ? `gist stars for ${params.username}`
+              : `top gist starts`}
+          </span>
+        </header>
+        <div className={styles.content}>{children}</div>
+        <div className={styles.background} />
         <ScrollRestoration />
         <Scripts />
       </body>

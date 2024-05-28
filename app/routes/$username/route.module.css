@@ -1,0 +1,7 @@
+.cards {
+  padding: 30px;
+  gap: 30px;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}

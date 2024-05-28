@@ -6,22 +6,21 @@
       accept-encoding: gzip,deflate,br
       authorization: masked
       connection: close
-      content-length: "330"
+      content-length: "361"
       content-type: application/json; charset=utf-8
       host: api.github.com
       user-agent: octokit-graphql.js/0.0.0-development Node.js/21
     body: '{"query":"\n{\n  user(login: \"octocat\") {\n    gists(first: 100)
       {\n      nodes
       {\n        id\n        name\n        description\n        stargazerCount\n        url\n        createdAt\n        updatedAt\n        files
-      {\n          name\n          language
+      {\n          name\n          text(truncate: 500)\n          language
       {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n"}'
   response:
     status: 200
     statusText: OK
     headers:
       access-control-allow-origin: "*"
-      access-control-expose-headers:
-        ETag, Link, Location, Retry-After, X-GitHub-OTP,
+      access-control-expose-headers: ETag, Link, Location, Retry-After, X-GitHub-OTP,
         X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used,
         X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
         X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type,
@@ -30,7 +29,7 @@
       content-encoding: gzip
       content-security-policy: default-src 'none'
       content-type: application/json; charset=utf-8
-      date: Sun, 26 May 2024 19:04:56 GMT
+      date: Tue, 28 May 2024 00:36:55 GMT
       github-authentication-token-expiration: 2024-08-24 18:24:08 UTC
       referrer-policy: origin-when-cross-origin, strict-origin-when-cross-origin
       server: GitHub.com
@@ -41,11 +40,11 @@
       x-content-type-options: nosniff
       x-frame-options: deny
       x-github-media-type: github.v3; format=json
-      x-github-request-id: F303:2E51EA:43320F:6DE599:665387D7
+      x-github-request-id: D120:2CA45C:63D39D0:A88D5B0:66552726
       x-ratelimit-limit: "5000"
-      x-ratelimit-remaining: "4950"
-      x-ratelimit-reset: "1716751674"
+      x-ratelimit-remaining: "4946"
+      x-ratelimit-reset: "1716858491"
       x-ratelimit-resource: graphql
-      x-ratelimit-used: "50"
+      x-ratelimit-used: "54"
       x-xss-protection: "0"
-    body: H4sIAAAAAAAAA7WVbW/aMBCA/0rnfSXUPjsvWNqHqnQa08IETVfBVFUmCUkgJFVe1JaK/75LikpLwqimDgkRYefs5/Hd+Yl4qlBEPpEy97PqN4jyIq8ektTz8eH3E4k8IondHxljiNde/+JhuBjc2+vBF9IhiVr5OMqYAZQD/oEvuVl0V0RpQmRSxnGH5IXKArX2s/O0TAoieYeUWYxvhUVxl8vT02rNbhAVYTnruunqdBfNzXxV+N4ZvkWAMqZRSwNwaE8KQzJjiguWd4jwMgW4xkCjPYfpEqiEeso8irco2+0WPi7o5jgUqyQoVYAMSPzMcv6ZbDY3m04r+FIMnT3wnqV/IPg2Wiu47lCQgkudt4MzDVg1hZtS9P4D+OjtieNWxftOHN5x4ttofwHXJbcOgTNwGJd46NT8SPC13b9a24uL1+Cc6hzY+8DNo+Av0RrgjNapTiWzpKip9lJdaBSzXXdYTyI7Fx8IvnwcOi7g9xV4D3TT0M19cHKZrvwTLNtVmpxUVRwFSZpV/yTzKCgzVbWCqtQabYCbR/Nit+aeHmQHDcyKnVsSDujRNVZPYdgJoFXPbsO4w5ZmMHiG+YEd6kBX+B4OFwGzr4fLqTOgExiH08U4+tn/FWHEbUsBZVg6cz0fhOupuZhZ+qzhsUURsGP5cyBy05aJyVLb4pLWKprJVNsCHBdS0FZbeR7eLv3HW+V53TxsN3YZ+nF8wNWZsNdfVzZMo2k/WE+ubTrtj2DYv3rYuaIWZ3M+n3kWV67whCH0RrGRNlfCOCbrQOg2WcArE1U/qcuqecm89Fq8h9plYSloqizCNNMy/z6LCv+fnE0Xk+sR9qAJupsu7XWI7obhEL7GO2eGqzwOhsUNj1szjytT+Tj65i4m3/Bc0pP7NIu9T23+jl7LB1Zp6MPGRZnDUAymW5s+LF6mMeFQQwqQtG7qjTu6SqP0tt5uN6uqpaU6x+XssU61mw1+/gAOHe8PzQgAAA==
+    body: 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

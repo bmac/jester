@@ -3,6 +3,15 @@ import { graphql } from "@octokit/graphql";
 export type Gist = {
   description: string;
   stargazerCount: number;
+  id: string;
+  url: string;
+  files: {
+      name: string;
+      text: string;
+      language: {
+          name: string;
+      }
+  }[]
 };
 
 export const getGistsForUser = async (username: string) => {
@@ -27,6 +36,7 @@ export const getGistsForUser = async (username: string) => {
         updatedAt
         files {
           name
+          text(truncate: 500)
           language {
             name
           }
