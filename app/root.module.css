@@ -38,16 +38,18 @@ header {
   padding: 6px 16px;
   font-size: 2rem;
 
-  font-family: "Luckiest Guy", cursive; /* or 'Playfair Display', serif */
+  font-family: "Luckiest Guy", cursive;
   font-size: 24pt;
   color: #ffffff;
-  padding: 20px;
   background: linear-gradient(
     to top,
     #800000,
     #402129
-  ); /* Gradient from dark red to light red */
-  border-bottom: 1px solid gold; /* Thin golden border */
+  );
+  border-bottom: 1px solid gold;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .content {
@@ -83,5 +85,4 @@ header {
 .subHeading {
   font-family: initial;
   font-size: 0.8em;
-  float: right;
 }
