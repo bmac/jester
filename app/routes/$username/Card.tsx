@@ -27,10 +27,6 @@ export const CARDS = [
   "2♦",
 ];
 
-const truncateLines = (text: string, lines = 11) => {
-  return text.split("\n").slice(0, lines).join("\n");
-};
-
 export const Card = ({
   filename,
   url,
@@ -56,7 +52,7 @@ export const Card = ({
           <span className={styles.stars}>★ {stars} stars</span>
         </section>
         <p className={styles.description}>{description}</p>
-        <pre className={styles.code}>{truncateLines(code)}</pre>
+        <pre className={styles.code}>{code}</pre>
       </article>
       <div className={`${styles.corner} ${styles.cornerBottomRight}`}>
         {card}
