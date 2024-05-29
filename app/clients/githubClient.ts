@@ -36,7 +36,7 @@ export const getGistsForUser = async (username: string) => {
         updatedAt
         files {
           name
-          text(truncate: 500)
+          text(truncate: 1000)
           language {
             name
           }

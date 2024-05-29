@@ -41,7 +41,7 @@ describe("gistService", () => {
     expect(topGists[0].files).toEqual([{ name: ".gitignore", text: "" }]);
   });
 
-  it("should only return the first 10 lines of a file", async () => {
+  it("should only return the first 11 lines of a file", async () => {
     const gist = {
       files: [
         {
@@ -54,6 +54,8 @@ describe("gistService", () => {
 
     const topGists = await gistService.topGistForUser("octocat");
 
-    expect(topGists[0].files[0].text).toBe("1\n2\n3\n4\n5\n6\n7\n8\n9\n10");
+    expect(topGists[0].files[0].text).toBe(
+      "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12",
+    );
   });
 });

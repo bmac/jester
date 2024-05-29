@@ -1,6 +1,6 @@
 import { getGistsForUser } from "~/clients/githubClient";
 
-const truncateLines = (text: string, lines = 10) => {
+const truncateLines = (text: string, lines = 12) => {
   return text.split("\n").slice(0, lines).join("\n");
 };
 
