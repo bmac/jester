@@ -4,7 +4,7 @@ import { topGistForUser } from "~/services/gistService";
 import { useLoaderData } from "@remix-run/react";
 import { Card, CARDS } from "./Card";
 
-export async function loader({params}: LoaderFunctionArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   if (!params.username) {
     throw json({}, 404);
   }
@@ -12,11 +12,11 @@ export async function loader({params}: LoaderFunctionArgs) {
   return {
     topGists: await topGists,
   };
-};
+}
 
 export default function UserName() {
   const data = useLoaderData<typeof loader>();
-    
+
   const { topGists } = useLoaderData<typeof loader>();
   return (
     <div className={styles.cards}>

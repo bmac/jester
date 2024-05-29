@@ -41,11 +41,7 @@ header {
   font-family: "Luckiest Guy", cursive;
   font-size: 24pt;
   color: #ffffff;
-  background: linear-gradient(
-    to top,
-    #800000,
-    #402129
-  );
+  background: linear-gradient(to top, #800000, #402129);
   border-bottom: 1px solid gold;
   display: flex;
   justify-content: space-between;

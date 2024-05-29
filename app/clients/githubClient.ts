@@ -6,12 +6,12 @@ export type Gist = {
   id: string;
   url: string;
   files: {
+    name: string;
+    text: string;
+    language: {
       name: string;
-      text: string;
-      language: {
-          name: string;
-      }
-  }[]
+    };
+  }[];
 };
 
 export const getGistsForUser = async (username: string) => {
