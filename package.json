@@ -9,6 +9,7 @@
     "test": "vitest",
     "e2e": "NODE_OPTIONS='--import tsx/esm' cucumber-js --import features/support/steps.ts",
     "specflow": "NODE_OPTIONS='--import tsx/esm' cucumber-js --import features/support/steps-specflow.ts",
+    "playwright": "playwright test e2e",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
     "prettier": "prettier --write .",
