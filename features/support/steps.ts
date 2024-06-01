@@ -1,12 +1,23 @@
 import assert from "assert";
-import { When, Then } from "@cucumber/cucumber";
-import { topGistForUser } from "../../app/services/gistService";
+import { When, Then, Before, After } from "@cucumber/cucumber";
+import { chromium } from "playwright";
 
-When("I visit octocat's page", async function () {
-  this.topGists = await topGistForUser("octocat");
+Before(async function () {
+  this.browser = await chromium.launch();
+  const context = await this.browser.newContext();
+  const page = await context.newPage();
+  this.page = page;
 });
 
-Then("I should see .gitignore listed first", function () {
-  const topGist = this.topGists[0];
-  assert.equal(topGist.description, "Some common .gitignore configurations");
+After(async function () {
+  return this.browser.close();
+});
+
+When("I visit octocat's page", async function () {
+  await this.page.goto("http://localhost:5173/octocat");
+});
+
+Then("I should see .gitignore listed first", async function () {
+  const filename = await this.page.getByTestId("card-filename-0");
+  assert.equal(await filename.innerText(), ".gitignore");
 });

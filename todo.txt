@@ -1,0 +1,5 @@
+- add playwrite e2e tests
+- implement search page for the index
+- add links to popular users on the index page
+- add caching
+- deploy somewhere?

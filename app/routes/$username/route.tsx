@@ -15,8 +15,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export default function UserName() {
-  const data = useLoaderData<typeof loader>();
-
   const { topGists } = useLoaderData<typeof loader>();
   return (
     <div className={styles.cards}>
@@ -29,6 +27,7 @@ export default function UserName() {
           description={gist.description}
           code={gist.files[0]?.text || ""}
           card={CARDS[index % CARDS.length]}
+          index={index}
         />
       ))}
     </div>

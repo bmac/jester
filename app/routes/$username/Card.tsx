@@ -7,6 +7,7 @@ type CardProps = {
   description: string;
   code: string;
   card: string;
+  index: number;
 };
 
 export const CARDS = [
@@ -34,6 +35,7 @@ export const Card = ({
   description,
   code,
   card,
+  index,
 }: CardProps) => {
   const isDiamonds = card.includes("♦");
   const isHearts = card.includes("♥");
@@ -46,7 +48,11 @@ export const Card = ({
       <div className={`${styles.corner} ${styles.cornerTopLeft}`}>{card}</div>
       <article className={styles.content}>
         <section className={styles.header}>
-          <a href={url} className={styles.filename}>
+          <a
+            href={url}
+            className={styles.filename}
+            data-testid={`card-filename-${index}`}
+          >
             {filename}
           </a>
           <span className={styles.stars}>★ {stars} stars</span>
