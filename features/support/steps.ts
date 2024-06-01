@@ -1,6 +1,6 @@
-import assert from "assert";
 import { When, Then, Before, After } from "@cucumber/cucumber";
 import { chromium } from "playwright";
+import { expect } from '@playwright/test';
 
 Before(async function () {
   this.browser = await chromium.launch();
@@ -19,5 +19,5 @@ When("I visit octocat's page", async function () {
 
 Then("I should see .gitignore listed first", async function () {
   const filename = await this.page.getByTestId("card-filename-0");
-  assert.equal(await filename.innerText(), ".gitignore");
+  expect(await filename.innerText()).toBe(".gitignore");
 });

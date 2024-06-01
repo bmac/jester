@@ -1,6 +1,7 @@
 import TsFlow from "cucumber-tsflow";
-import assert from "assert";
 import { Browser, Page, chromium } from "playwright";
+import { expect } from '@playwright/test';
+
 
 const { binding, then, when, after, before } = TsFlow;
 
@@ -19,7 +20,7 @@ class ArithmeticSteps {
 
   @after()
   public async teardown() {
-    this.browser.close();
+    await this.browser.close();
   }
 
   @when(/I visit octocat's page/)
@@ -30,7 +31,7 @@ class ArithmeticSteps {
   @then(/I should see .gitignore listed first/)
   public async assertListedFirst() {
     const titleNode = await this.page.getByTestId("card-filename-0");
-    assert.equal(await titleNode.innerText(), ".gitignore");
+    expect(await titleNode.innerText()).toBe(".gitignore");
   }
 }
 
