@@ -3,7 +3,7 @@ import { Browser, Page, chromium } from "playwright";
 import { expect } from '@playwright/test';
 
 
-const { binding, then, when, after, before } = TsFlow;
+const { binding, then, when, after, afterAll, before } = TsFlow;
 
 @binding()
 class ArithmeticSteps {
@@ -18,11 +18,6 @@ class ArithmeticSteps {
     this.page = page;
   }
 
-  @after()
-  public async teardown() {
-    await this.browser.close();
-  }
-
   @when(/I visit octocat's page/)
   public async visitPage() {
     await this.page.goto("http://localhost:5173/octocat");
@@ -30,8 +25,13 @@ class ArithmeticSteps {
 
   @then(/I should see .gitignore listed first/)
   public async assertListedFirst() {
-    const titleNode = await this.page.getByTestId("card-filename-0");
+    const titleNode = this.page.getByTestId("card-filename-0");
     expect(await titleNode.innerText()).toBe(".gitignore");
+  }
+
+  @after()
+  public async teardown() {
+    await this.browser.close();
   }
 }
 
