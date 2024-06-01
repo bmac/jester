@@ -1,23 +1,36 @@
 import TsFlow from "cucumber-tsflow";
 import assert from "assert";
-import { Gist } from "~/clients/githubClient";
-import { topGistForUser } from "~/services/gistService";
+import { Browser, Page, chromium } from "playwright";
 
-const { binding, then, when } = TsFlow;
+const { binding, then, when, after, before } = TsFlow;
 
 @binding()
 class ArithmeticSteps {
-  private topGists: Gist[] = [];
+  private browser: Browser = null as unknown as Browser;
+  private page: Page = null as unknown as Page;
+
+  @before()
+  public async setup() {
+    this.browser = await chromium.launch();
+    const context = await this.browser.newContext();
+    const page = await context.newPage();
+    this.page = page;
+  }
+
+  @after()
+  public async teardown() {
+    this.browser.close();
+  }
 
   @when(/I visit octocat's page/)
   public async visitPage() {
-    this.topGists = await topGistForUser("octocat");
+    await this.page.goto("http://localhost:5173/octocat");
   }
 
   @then(/I should see .gitignore listed first/)
-  public assertListedFirst() {
-    const topGist = this.topGists[0];
-    assert.equal(topGist.description, "Some common .gitignore configurations");
+  public async assertListedFirst() {
+    const titleNode = await this.page.getByTestId("card-filename-0");
+    assert.equal(await titleNode.innerText(), ".gitignore");
   }
 }
 
