@@ -1,6 +1,6 @@
-Feature: Stared Gists
-  List the most popular gists
+Feature: Gists
+  Jester shows popular gists for a user sorted by stars
 
-  Scenario: User has popular gists
+  Scenario: Visiting a user's page displays sorted gists
     When I visit octocat's page
     Then I should see .gitignore listed first
