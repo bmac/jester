@@ -12,7 +12,9 @@ class ArithmeticSteps {
   @before()
   public async setup() {
     this.browser = await chromium.launch();
-    const context = await this.browser.newContext();
+    const context = await this.browser.newContext({
+      baseURL: "http://localhost:5173/",
+    });
     const page = await context.newPage();
     this.page = page;
   }

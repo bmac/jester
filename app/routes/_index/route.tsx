@@ -1,6 +1,7 @@
 import type { ActionFunction, MetaFunction } from "@remix-run/node";
 import styles from "./route.module.css";
 import { Form, redirect } from "@remix-run/react";
+import { parseUsername } from "./parseUsername";
 
 export const meta: MetaFunction = ({ params }) => {
   return [
@@ -13,9 +14,7 @@ export const meta: MetaFunction = ({ params }) => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
-  const username = formData.get("username") || "";
-  // todo validation
+  const { username } = await parseUsername(await request.formData());
   return redirect(`/${username}`);
 };
 
