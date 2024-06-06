@@ -8,6 +8,7 @@ installGlobals();
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
   test: {
+    exclude: ['e2e/**', 'node_modules'],
     setupFiles: ["/test/setup.ts"],
   },
 });

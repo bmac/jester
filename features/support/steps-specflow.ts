@@ -2,7 +2,7 @@ import TsFlow from "cucumber-tsflow";
 import { Browser, Page, chromium } from "playwright";
 import { expect } from "@playwright/test";
 
-const { binding, then, when, after, afterAll, before } = TsFlow;
+const { binding, then, when, after, before } = TsFlow;
 
 @binding()
 class ArithmeticSteps {

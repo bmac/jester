@@ -1,28 +1,35 @@
 import type { ActionFunction, MetaFunction } from "@remix-run/node";
-import styles from "./route.module.css";
-import { Form, redirect } from "@remix-run/react";
+// import styles from "./route.module.css";
+import { Form, json, redirect, useActionData } from "@remix-run/react";
 import { parseUsername } from "./parseUsername";
 
-export const meta: MetaFunction = ({ params }) => {
+export const meta: MetaFunction = () => {
   return [
     { title: "Jester" },
     {
       name: "description",
-      content: `Top starred gists for ${params.username}!`,
+      content: `Top starred gists from github.`,
     },
   ];
 };
 
 export const action: ActionFunction = async ({ request }) => {
-  const { username } = await parseUsername(await request.formData());
-  return redirect(`/${username}`);
+  const result = await parseUsername(await request.formData());
+  if (result.success) {
+    return redirect(`/${result.data.username}`);
+  }
+  return json(result.error.flatten().fieldErrors, 400);
 };
 
 export default function Index() {
+  const errors = useActionData<typeof action>();
   return (
-    <Form method="POST" target=".">
-      <label htmlFor="username">Username</label>
-      <input id="username" name="username" type="search" />
-    </Form>
+    <>
+      <p>{errors?.username[0]}</p>
+      <Form method="POST" target=".">
+        <label htmlFor="username">Username</label>
+        <input id="username" name="username" type="search" />
+      </Form>
+    </>
   );
 }
