@@ -82,3 +82,7 @@ header {
   font-family: initial;
   font-size: 0.8em;
 }
+
+.logoLink {
+    text-decoration: none;
+}

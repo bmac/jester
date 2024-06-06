@@ -1,4 +1,7 @@
 - implement search page for the index
+- add styling for index page
+- add 404 on details page if user does not exist
+- add message if there are no gists
 - add links to popular users on the index page
 - add caching
 - deploy somewhere?
