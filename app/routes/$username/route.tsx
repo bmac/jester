@@ -5,13 +5,14 @@ import { useLoaderData } from "@remix-run/react";
 import { Card, CARDS } from "./Card";
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  if (!params.username) {
+  try {
+    const topGists = topGistForUser(params.username || "");
+    return {
+      topGists: await topGists,
+    };
+  } catch (error) {
     throw json({}, 404);
   }
-  const topGists = topGistForUser(params.username);
-  return {
-    topGists: await topGists,
-  };
 }
 
 export default function UserName() {
