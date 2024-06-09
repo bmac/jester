@@ -22,11 +22,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <header>
-          <a href="/" className={styles.logoLink}>🎭 Jester </a>
+          <a href="/" className={styles.logoLink}>
+            <span className={styles.logo}>🎭</span> Jester{" "}
+          </a>
           <span className={styles.subHeading}>
-            {params.username
-              ? `gist stars for ${params.username}`
-              : `top gist starts`}
+            {params.username ? `gist stars for ${params.username}` : ``}
           </span>
         </header>
         <div className={styles.content}>{children}</div>

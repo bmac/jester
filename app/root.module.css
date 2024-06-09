@@ -1,6 +1,8 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: "Georgia", serif;
+
   line-height: 1.5;
   color: #f5f5dc;
   color: #dcdcdc;
@@ -84,5 +86,14 @@ header {
 }
 
 .logoLink {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+.logo {
+  margin-right: 10px;
+}
+
+::selection {
+  background: #333333;
+  color: #f5f5dc;
 }
