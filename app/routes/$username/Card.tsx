@@ -1,17 +1,12 @@
 import styles from "./Card.module.css";
 
 type CardProps = {
-  filename: string;
-  url: string;
-  stars: number;
-  description: string;
-  code: string;
   card: string;
-  index: number;
+  children: React.ReactNode;
 };
 
+export const JOKER = "JOKER";
 export const CARDS = [
-  "JOKER",
   "A♦",
   "K♣",
   "Q♥",
@@ -28,15 +23,7 @@ export const CARDS = [
   "2♦",
 ];
 
-export const Card = ({
-  filename,
-  url,
-  stars,
-  description,
-  code,
-  card,
-  index,
-}: CardProps) => {
+export const Card = ({ card, children }: CardProps) => {
   const isDiamonds = card.includes("♦");
   const isHearts = card.includes("♥");
   const isTen = card.includes("十");
@@ -46,20 +33,7 @@ export const Card = ({
       className={`${styles.card} ${isHearts ? styles.hearts : ""} ${isDiamonds ? styles.diamonds : ""} ${isTen ? styles.ten : ""} ${isJoker ? styles.joker : ""}`}
     >
       <div className={`${styles.corner} ${styles.cornerTopLeft}`}>{card}</div>
-      <article className={styles.content}>
-        <section className={styles.header}>
-          <a
-            href={url}
-            className={styles.filename}
-            data-testid={`card-filename-${index}`}
-          >
-            {filename}
-          </a>
-          <span className={styles.stars}>★ {stars} stars</span>
-        </section>
-        <p className={styles.description}>{description}</p>
-        <pre className={styles.code}>{code}</pre>
-      </article>
+      <article className={styles.content}>{children}</article>
       <div className={`${styles.corner} ${styles.cornerBottomRight}`}>
         {card}
       </div>

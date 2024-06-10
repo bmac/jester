@@ -5,3 +5,37 @@
   align-items: center;
   flex-flow: column;
 }
+
+.p {
+  margin-top: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.filename {
+  font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 0.5rem;
+}
+
+.code {
+  overflow: hidden;
+  padding-top: 1rem;
+}
+
+.stars {
+  color: goldenrod;
+}
+
+.description {
+  color: dimgrey;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
