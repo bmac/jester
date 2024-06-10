@@ -1,11 +1,15 @@
-import { type LoaderFunctionArgs, json, MetaFunction } from "@remix-run/node";
+import {
+  type LoaderFunctionArgs,
+  json,
+  MetaFunction,
+  HeadersFunction,
+} from "@remix-run/node";
 import styles from "./route.module.css";
 import { topGistForUser } from "~/services/gistService";
 import { useLoaderData, useParams } from "@remix-run/react";
 import { Card, CARDS, JOKER } from "./Card";
 
-
-export const meta: MetaFunction = ({params}) => {
+export const meta: MetaFunction = ({ params }) => {
   return [
     { title: `Jester: Gist Stars for ${params.username}` },
     {
@@ -15,12 +19,16 @@ export const meta: MetaFunction = ({params}) => {
   ];
 };
 
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "public, max-age=3600, s-maxage=3600", // cache for 3 hours
+});
+
 export async function loader({ params }: LoaderFunctionArgs) {
   try {
     const topGists = topGistForUser(params.username || "");
-    return {
+    return json({
       topGists: await topGists,
-    };
+    });
   } catch (error) {
     throw json({}, 404);
   }
