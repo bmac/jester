@@ -1,8 +1,19 @@
-import { type LoaderFunctionArgs, json } from "@remix-run/node";
+import { type LoaderFunctionArgs, json, MetaFunction } from "@remix-run/node";
 import styles from "./route.module.css";
 import { topGistForUser } from "~/services/gistService";
 import { useLoaderData, useParams } from "@remix-run/react";
 import { Card, CARDS, JOKER } from "./Card";
+
+
+export const meta: MetaFunction = ({params}) => {
+  return [
+    { title: `Jester: Gist Stars for ${params.username}` },
+    {
+      name: "description",
+      content: `Top starred gists from github for ${params.username}.`,
+    },
+  ];
+};
 
 export async function loader({ params }: LoaderFunctionArgs) {
   try {
