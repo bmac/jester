@@ -1,6 +1,6 @@
 import type { ActionFunction, MetaFunction } from "@remix-run/node";
 import styles from "./route.module.css";
-import { Form, json, redirect, useActionData } from "@remix-run/react";
+import { Form, Link, json, redirect, useActionData } from "@remix-run/react";
 import { parseUsername } from "./parseUsername";
 
 export const meta: MetaFunction = () => {
@@ -50,16 +50,21 @@ export default function Index() {
       <h3 className={styles.popularGists}>Popular Gist Users</h3>
       <ul className={styles.userList}>
         <li>
-          <a href="/octocat">octocat</a>
+          <Link to="/octocat" prefetch="intent">octocat</Link>
         </li>
         <li>
-          <a href="/defunkt">defunkt</a>
+          <Link to="/garybernhardt" prefetch="intent">garybernhardt</Link>
         </li>
         <li>
-          <a href="/garybernhardt">garybernhardt</a>
+          <Link to="/bmac" prefetch="intent">bmac</Link>
         </li>
+
         <li>
-          <a href="/bmac">bmac</a>
+          <Link to="/paulirish" prefetch="intent">paulirish</Link>
+        </li>
+
+        <li>
+          <Link to="/rwaldron" prefetch="intent">rwaldron</Link>
         </li>
       </ul>
     </div>
