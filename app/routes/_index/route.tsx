@@ -50,21 +50,31 @@ export default function Index() {
       <h3 className={styles.popularGists}>Popular Gist Users</h3>
       <ul className={styles.userList}>
         <li>
-          <Link to="/octocat" prefetch="intent">octocat</Link>
+          <Link to="/octocat" prefetch="intent">
+            octocat
+          </Link>
         </li>
         <li>
-          <Link to="/garybernhardt" prefetch="intent">garybernhardt</Link>
+          <Link to="/garybernhardt" prefetch="intent">
+            garybernhardt
+          </Link>
         </li>
         <li>
-          <Link to="/bmac" prefetch="intent">bmac</Link>
+          <Link to="/bmac" prefetch="intent">
+            bmac
+          </Link>
         </li>
 
         <li>
-          <Link to="/paulirish" prefetch="intent">paulirish</Link>
+          <Link to="/paulirish" prefetch="intent">
+            paulirish
+          </Link>
         </li>
 
         <li>
-          <Link to="/rwaldron" prefetch="intent">rwaldron</Link>
+          <Link to="/rwaldron" prefetch="intent">
+            rwaldron
+          </Link>
         </li>
       </ul>
     </div>
