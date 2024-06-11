@@ -1,2 +1,4 @@
+- Add link preview meta tags
 - add links to popular users on the index page
+- Add prefetch to homepage links
 - deploy somewhere?
