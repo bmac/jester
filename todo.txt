@@ -1,3 +1,2 @@
 - add links to popular users on the index page
-- add caching
 - deploy somewhere?
