@@ -9,13 +9,40 @@ import { topGistForUser } from "~/services/gistService";
 import { useLoaderData, useParams } from "@remix-run/react";
 import { Card, CARDS, JOKER } from "./Card";
 
-export const meta: MetaFunction = ({ params }) => {
+export const meta: MetaFunction<typeof loader> = ({
+  params,
+  data,
+  location,
+}) => {
+  const { username } = params;
+  const first = data?.topGists[0];
+  const filename = first?.files[0].name || "";
+  const stars = first?.stargazerCount || 0;
+  const firstLine = first?.files[0]?.text?.split("\n")[0].slice(0, 40) || "";
+  const title = `Jester — Top gist stars for ${username}`;
+  const description = `${username}'s most popular gists: ${filename} (${stars} starts) ${firstLine}`;
+  const image = "/og-screenshot.png";
+  const url = `https://jester.codes${location.pathname}`;
   return [
-    { title: `Jester: Gist Stars for ${params.username}` },
+    { title },
+    { name: "title", content: title },
     {
       name: "description",
-      content: `Top starred gists from github for ${params.username}.`,
+      content: description,
     },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    {
+      name: "og:description",
+      content: description,
+    },
+    { property: "og:image", content: image },
+    // { property: 'twitter:card', content: image },
+    { property: "twitter:url", content: url },
+    { property: "twitter:title", content: title },
+    { property: "twitter:description", content: description },
+    { property: "twitter:image", content: image },
   ];
 };
 
