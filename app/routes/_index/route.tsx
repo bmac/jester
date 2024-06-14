@@ -27,7 +27,7 @@ import { parseUsername } from "./parseUsername";
 export const meta: MetaFunction = () => {
   const title = "Jester — Top starred gists from github";
   const description = `Jester shows you the most popular gists for a github user. Search your favorite developer or checkout out selection of top gisters.`;
-  const image = "/og-screenshot.png";
+  const image = "https://jester.codes/og-screenshot.png";
   const url = "https://jester.codes";
   return [
     { title },
