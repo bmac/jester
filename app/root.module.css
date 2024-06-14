@@ -83,6 +83,10 @@ header {
 .subHeading {
   font-family: initial;
   font-size: 0.8em;
+  max-width: calc(100vw - 10rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .logoLink {

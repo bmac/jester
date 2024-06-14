@@ -93,9 +93,19 @@ export default function Index() {
             octocat
           </Link>
         </li>
+          <li>
+          <Link to="/pamelafox" prefetch="intent">
+            pamelafox
+          </Link>
+        </li>
         <li>
           <Link to="/garybernhardt" prefetch="intent">
             garybernhardt
+          </Link>
+        </li>
+        <li>
+          <Link to="/LeaVerou" prefetch="intent">
+            LeaVerou
           </Link>
         </li>
         <li>
@@ -103,13 +113,11 @@ export default function Index() {
             bmac
           </Link>
         </li>
-
         <li>
           <Link to="/paulirish" prefetch="intent">
             paulirish
           </Link>
         </li>
-
         <li>
           <Link to="/rwaldron" prefetch="intent">
             rwaldron
