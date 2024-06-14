@@ -93,7 +93,7 @@ export default function Index() {
             octocat
           </Link>
         </li>
-          <li>
+        <li>
           <Link to="/pamelafox" prefetch="intent">
             pamelafox
           </Link>

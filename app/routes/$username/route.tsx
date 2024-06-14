@@ -8,7 +8,6 @@ import styles from "./route.module.css";
 import { topGistForUser } from "~/services/gistService";
 import { useLoaderData, useParams } from "@remix-run/react";
 import { Card, CARDS, JOKER } from "./Card";
-import { createPreviewImage } from "./createImage";
 
 export const meta: MetaFunction<typeof loader> = ({
   params,
@@ -23,13 +22,7 @@ export const meta: MetaFunction<typeof loader> = ({
   const title = `Jester — Top gist stars for ${username}`;
   const description = `${username}'s most popular gists: ${filename} (${stars} starts) ${firstLine}`;
   const url = `https://jester.codes${location.pathname}`;
-  const image = createPreviewImage({
-      username: username || '',
-      filename,
-      description: first?.description || '',
-      stars,
-      url
-  });
+  const image = url + "/preview.svg";
   return [
     { title },
     { name: "title", content: title },

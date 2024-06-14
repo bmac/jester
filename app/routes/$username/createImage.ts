@@ -1,14 +1,19 @@
-export const createPreviewImage = (
-    {username, filename, stars, description, url}:
-    {
-        username: string;
-        filename: string;
-        description: string;
-        url: string;
-        stars: number;
-    }
-) => {
-    return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(`
+import { escape } from "html-escaper";
+
+export const createPreviewImage = ({
+  username,
+  filename,
+  stars,
+  description,
+  url,
+}: {
+  username: string;
+  filename: string;
+  description: string;
+  url: string;
+  stars: number;
+}) => {
+  return `
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-stacking-context="true" aria-owns="html1" width="375" height="540" viewBox="0 0 375 540">
     <style/>
     <g data-stacking-layer="rootBackgroundAndBorders"/>
@@ -82,7 +87,7 @@ export const createPreviewImage = (
                     </a>
                     <g data-tag="span" id="_subHeading_1fotg_831" class="_subHeading_1fotg_83" data-z-index="auto" data-stacking-context="true">
                         <text color="rgb(255, 255, 255)" dominant-baseline="text-after-edge" font-family="Times" font-size="25.6px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(255, 255, 255)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(255, 255, 255)">
-                            <tspan xml:space="preserve" x="170.59375" y="47" textLength="188.40625" lengthAdjust="spacingAndGlyphs">gist stars for ${username}</tspan>
+                            <tspan xml:space="preserve" x="170.59375" y="47" textLength="188.40625" lengthAdjust="spacingAndGlyphs">gist stars for ${escape(username)}</tspan>
                         </text>
                     </g>
                 </g>
@@ -108,12 +113,12 @@ export const createPreviewImage = (
                                 <rect width="253" height="338" x="61" y="141" fill="rgba(0, 0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-width="1px" rx="10" ry="10"/>
                             </g>
                             <g data-tag="section" id="_header_1i76z_131" class="_header_1i76z_13" data-z-index="auto" data-stacking-context="true" role="region" aria-owns="_filename_1i76z_201 _stars_1i76z_321">
-                                <a href="${url}" data-tag="a" id="_filename_1i76z_201" class="_filename_1i76z_20" data-z-index="auto" data-stacking-context="true" role="link" mask="url(#mask-for-_filename_1i76z_2011)">
+                                <a href="${escape(url)}" data-tag="a" id="_filename_1i76z_201" class="_filename_1i76z_20" data-z-index="auto" data-stacking-context="true" role="link" mask="url(#mask-for-_filename_1i76z_2011)">
                                     <mask id="mask-for-_filename_1i76z_2011">
                                         <rect width="101.75" height="19.5" x="77" y="159.25" fill="#ffffff"/>
                                     </mask>
                                     <text color="rgb(128, 0, 0)" dominant-baseline="text-after-edge" font-family="monospace" font-size="13px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="underline solid rgb(128, 0, 0)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(128, 0, 0)">
-                                        <tspan xml:space="preserve" x="77" y="176.25" textLength="101.75" lengthAdjust="spacingAndGlyphs">${filename}</tspan>
+                                        <tspan xml:space="preserve" x="77" y="176.25" textLength="101.75" lengthAdjust="spacingAndGlyphs">${escape(filename)}</tspan>
                                     </text>
                                 </a>
                                 <g data-tag="span" id="_stars_1i76z_321" class="_stars_1i76z_32" data-z-index="auto" data-stacking-context="true">
@@ -121,7 +126,7 @@ export const createPreviewImage = (
                                         <tspan xml:space="preserve" x="231.484375" y="178" textLength="19.859375" lengthAdjust="spacingAndGlyphs">★ </tspan>
                                     </text>
                                     <text color="rgb(218, 165, 32)" dominant-baseline="text-after-edge" font-family="Georgia, serif" font-size="16px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(218, 165, 32)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(218, 165, 32)">
-                                        <tspan xml:space="preserve" x="251.34375" y="178" textLength="8.828125" lengthAdjust="spacingAndGlyphs">${stars}</tspan>
+                                        <tspan xml:space="preserve" x="251.34375" y="178" textLength="8.828125" lengthAdjust="spacingAndGlyphs">${escape(stars)}</tspan>
                                     </text>
                                     <text color="rgb(218, 165, 32)" dominant-baseline="text-after-edge" font-family="Georgia, serif" font-size="16px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(218, 165, 32)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(218, 165, 32)">
                                         <tspan xml:space="preserve" x="260.171875" y="178" textLength="37.828125" lengthAdjust="spacingAndGlyphs"> stars</tspan>
@@ -133,7 +138,7 @@ export const createPreviewImage = (
                                     <rect width="221" height="24" x="77" y="181" fill="#ffffff"/>
                                 </mask>
                                 <text color="rgb(105, 105, 105)" dominant-baseline="text-after-edge" font-family="Georgia, serif" font-size="16px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(105, 105, 105)" text-anchor="start" text-rendering="auto" unicode-bidi="isolate" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(105, 105, 105)">
-                                    <tspan xml:space="preserve" x="77" y="202" textLength="206.8828125" lengthAdjust="spacingAndGlyphs">${description}</tspan>
+                                    <tspan xml:space="preserve" x="77" y="202" textLength="206.8828125" lengthAdjust="spacingAndGlyphs">${escape(description)}</tspan>
                                 </text>
                             </g>
                             <g data-tag="pre" id="_code_1i76z_271" class="_code_1i76z_27" data-z-index="auto" data-stacking-context="true" mask="url(#mask-for-_code_1i76z_2711)">
@@ -164,7 +169,5 @@ export const createPreviewImage = (
     </g>
 </svg>
 
-`.replace(/\n/gm, ''))))
-    ;
-
+`.replace(/\n/gm, "");
 };
