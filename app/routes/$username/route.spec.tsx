@@ -2,9 +2,10 @@ import { describe, expect, it, vi } from "vitest";
 import { createRemixStub } from "@remix-run/testing";
 import type { Gist } from "~/clients/githubClient";
 import * as gistService from "~/services/gistService";
-import UserName, { headers as routeHeaders, loader } from "./route";
-import { HeadersArgs } from "@remix-run/node";
+import UserName, { headers as routeHeaders, loader, meta } from "./route";
+import { HeadersArgs, MetaArgs } from "@remix-run/node";
 import { render, screen } from "@testing-library/react";
+import { Location } from "@remix-run/react";
 
 const loaderArgs = {
   params: { username: "octocat" },
@@ -46,6 +47,39 @@ describe("header", () => {
     expect(headers.get("cache-control")).toEqual(
       "public, max-age=3600, s-maxage=3600",
     );
+  });
+});
+
+describe("meta", () => {
+  it("should render social media meta tags", async () => {
+    const metaTags = meta({
+        params: { username: 'bmac' },
+        data: { topGists: [{
+            description: 'a gitignore',
+            stargazerCount: 3,
+            id: '',
+            url: 'https://example.com',
+            files: [{
+                name: '.gitignore',
+                text: '.DS_Store',
+            }]
+        }] },
+        location: { pathname: '/bmac'} as Location,
+    } as MetaArgs);
+
+    expect(metaTags).toMatchSnapshot();
+  });
+
+
+
+  it("should render social media meta tags when there are no gists", async () => {
+    const metaTags = meta({
+        params: { username: 'bmac' },
+        data: { topGists: [] },
+        location: { pathname: '/bmac'} as Location,
+    } as MetaArgs);
+
+    expect(metaTags).toMatchSnapshot();
   });
 });
 

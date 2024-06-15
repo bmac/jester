@@ -1,0 +1,105 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`meta > should render social media meta tags 1`] = `
+[
+  {
+    "title": "Jester — Top gist stars for bmac",
+  },
+  {
+    "content": "Jester — Top gist stars for bmac",
+    "name": "title",
+  },
+  {
+    "content": "bmac's most popular gists: .gitignore (3 starts) .DS_Store",
+    "name": "description",
+  },
+  {
+    "content": "website",
+    "property": "og:type",
+  },
+  {
+    "content": "https://jester.codes/bmac",
+    "property": "og:url",
+  },
+  {
+    "content": "Jester — Top gist stars for bmac",
+    "property": "og:title",
+  },
+  {
+    "content": "bmac's most popular gists: .gitignore (3 starts) .DS_Store",
+    "property": "og:description",
+  },
+  {
+    "content": "https://jester.codes/bmac/preview.png",
+    "property": "og:image",
+  },
+  {
+    "content": "https://jester.codes/bmac",
+    "property": "twitter:url",
+  },
+  {
+    "content": "Jester — Top gist stars for bmac",
+    "property": "twitter:title",
+  },
+  {
+    "content": "bmac's most popular gists: .gitignore (3 starts) .DS_Store",
+    "property": "twitter:description",
+  },
+  {
+    "content": "https://jester.codes/bmac/preview.png",
+    "property": "twitter:image",
+  },
+]
+`;
+
+exports[`meta > should render social media meta tags when there are no gists 1`] = `
+[
+  {
+    "title": "Jester — Top gist stars for bmac",
+  },
+  {
+    "content": "Jester — Top gist stars for bmac",
+    "name": "title",
+  },
+  {
+    "content": "bmac's most popular gists:  (0 starts) ",
+    "name": "description",
+  },
+  {
+    "content": "website",
+    "property": "og:type",
+  },
+  {
+    "content": "https://jester.codes/bmac",
+    "property": "og:url",
+  },
+  {
+    "content": "Jester — Top gist stars for bmac",
+    "property": "og:title",
+  },
+  {
+    "content": "bmac's most popular gists:  (0 starts) ",
+    "property": "og:description",
+  },
+  {
+    "content": "https://jester.codes/bmac/preview.png",
+    "property": "og:image",
+  },
+  {
+    "content": "https://jester.codes/bmac",
+    "property": "twitter:url",
+  },
+  {
+    "content": "Jester — Top gist stars for bmac",
+    "property": "twitter:title",
+  },
+  {
+    "content": "bmac's most popular gists:  (0 starts) ",
+    "property": "twitter:description",
+  },
+  {
+    "content": "https://jester.codes/bmac/preview.png",
+    "property": "twitter:image",
+  },
+]
+`;
