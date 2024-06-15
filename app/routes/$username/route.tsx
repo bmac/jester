@@ -22,7 +22,7 @@ export const meta: MetaFunction<typeof loader> = ({
   const title = `Jester — Top gist stars for ${username}`;
   const description = `${username}'s most popular gists: ${filename} (${stars} starts) ${firstLine}`;
   const url = `https://jester.codes${location.pathname}`;
-  const image = url + "/preview.svg";
+  const image = url + "/preview.png";
   return [
     { title },
     { name: "title", content: title },

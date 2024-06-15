@@ -78,7 +78,7 @@ export const createPreviewImage = ({
                     <a href="/" data-tag="a" id="_logoLink_1fotg_881" class="_logoLink_1fotg_88" data-z-index="auto" data-stacking-context="true" role="link" aria-owns="_logo_1fotg_881">
                         <g data-tag="span" id="_logo_1fotg_881" class="_logo_1fotg_88" data-z-index="auto" data-stacking-context="true">
                             <text color="rgb(250, 250, 210)" dominant-baseline="text-after-edge" font-family="&quot;Luckiest Guy&quot;, cursive" font-size="32px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(250, 250, 210)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(250, 250, 210)">
-                                <tspan xml:space="preserve" x="16" y="55.5" textLength="32" lengthAdjust="spacingAndGlyphs">🎭</tspan>
+                                <tspan xml:space="preserve" x="16" y="55.5" textLength="25" lengthAdjust="spacingAndGlyphs">♠️</tspan>
                             </text>
                         </g>
                         <text color="rgb(250, 250, 210)" dominant-baseline="text-after-edge" font-family="&quot;Luckiest Guy&quot;, cursive" font-size="32px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(250, 250, 210)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(250, 250, 210)">
@@ -117,7 +117,7 @@ export const createPreviewImage = ({
                                     <mask id="mask-for-_filename_1i76z_2011">
                                         <rect width="101.75" height="19.5" x="77" y="159.25" fill="#ffffff"/>
                                     </mask>
-                                    <text color="rgb(128, 0, 0)" dominant-baseline="text-after-edge" font-family="monospace" font-size="13px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="underline solid rgb(128, 0, 0)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(128, 0, 0)">
+                                    <text color="rgb(128, 0, 0)" dominant-baseline="text-after-edge" font-family="monospace" font-size="18px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="underline solid rgb(128, 0, 0)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(128, 0, 0)">
                                         <tspan xml:space="preserve" x="77" y="176.25" textLength="101.75" lengthAdjust="spacingAndGlyphs">${escape(filename)}</tspan>
                                     </text>
                                 </a>
@@ -152,7 +152,7 @@ export const createPreviewImage = ({
                         </g>
                         <g data-tag="div" id="_corner_i8bpk_182" class="_corner_i8bpk_18 _cornerBottomRight_i8bpk_32" data-z-index="auto" data-stacking-context="true">
                             <text color="rgb(165, 42, 42)" dominant-baseline="text-after-edge" font-family="cursive, sans-serif" font-size="24px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="700" direction="ltr" letter-spacing="-6px" text-decoration="none solid rgb(165, 42, 42)" text-anchor="start" text-rendering="auto" unicode-bidi="isolate" word-spacing="0px" writing-mode="vertical-rl" user-select="auto" fill="rgb(165, 42, 42)">
-                                <tspan xml:space="preserve" x="310" y="504" textLength="38" lengthAdjust="spacingAndGlyphs">A♦</tspan>
+                                <tspan xml:space="preserve" x="310" y="504" textLength="38" lengthAdjust="spacingAndGlyphs"><!--A♦ --></tspan>
                             </text>
                         </g>
                     </g>
