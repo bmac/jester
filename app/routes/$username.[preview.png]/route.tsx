@@ -1,6 +1,6 @@
 import { Resvg } from "@resvg/resvg-js";
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { createPreviewImage } from "../$username/createImage";
+import { createPreviewImage } from "./createImage";
 import { topGistForUser } from "~/services/gistService";
 
 const resvgConfig = {
