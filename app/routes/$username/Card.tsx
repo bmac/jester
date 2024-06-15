@@ -30,6 +30,7 @@ export const Card = ({ card, children }: CardProps) => {
   const isJoker = card.includes("JOKER");
   return (
     <div
+      data-testid="card"
       className={`${styles.card} ${isHearts ? styles.hearts : ""} ${isDiamonds ? styles.diamonds : ""} ${isTen ? styles.ten : ""} ${isJoker ? styles.joker : ""}`}
     >
       <div className={`${styles.corner} ${styles.cornerTopLeft}`}>{card}</div>
