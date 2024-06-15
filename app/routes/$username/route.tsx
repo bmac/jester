@@ -63,6 +63,22 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 export default function UserName() {
   const { topGists } = useLoaderData<typeof loader>();
+  const { username } = useParams();
+  if (topGists.length === 0) {
+    return (
+      <div className={styles.cards}>
+        <Card card={JOKER}>
+          <h1>Empty Deck</h1>
+          <p className={styles.p}>
+            Seems {username} doesn’t have any public gists.
+          </p>
+          <p className={styles.p}>
+            Want to <a href="/">search the pile</a> and draw again?
+          </p>
+        </Card>
+      </div>
+    );
+  }
   return (
     <div className={styles.cards}>
       {topGists.map((gist, index) => (

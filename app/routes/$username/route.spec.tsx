@@ -1,8 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
+import { createRemixStub } from "@remix-run/testing";
 import type { Gist } from "~/clients/githubClient";
 import * as gistService from "~/services/gistService";
-import { headers as routeHeaders, loader } from "./route";
+import UserName, { headers as routeHeaders, loader } from "./route";
 import { HeadersArgs } from "@remix-run/node";
+import { render, screen } from "@testing-library/react";
 
 const loaderArgs = {
   params: { username: "octocat" },
@@ -44,5 +46,45 @@ describe("header", () => {
     expect(headers.get("cache-control")).toEqual(
       "public, max-age=3600, s-maxage=3600",
     );
+  });
+});
+
+describe("UserName", () => {
+  it("should render the cards from the loader", async () => {
+    const RemixStub = createRemixStub([
+      {
+        path: "/",
+        Component: UserName,
+        loader() {
+          return {
+            topGists: [
+              {
+                id: 1,
+                files: [],
+                description: "my gist",
+              },
+            ],
+          };
+        },
+      },
+    ]);
+
+    render(<RemixStub />);
+    await screen.findByText("my gist");
+  });
+
+  it("should display a message when topGists is empty", async () => {
+    const RemixStub = createRemixStub([
+      {
+        path: "/",
+        Component: UserName,
+        loader() {
+          return { topGists: [] };
+        },
+      },
+    ]);
+
+    render(<RemixStub />);
+    await screen.findByText("Empty Deck");
   });
 });
