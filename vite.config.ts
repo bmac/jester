@@ -7,10 +7,4 @@ installGlobals();
 
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
-  test: {
-    // environment: 'jsdom',
-    environment: "happy-dom",
-    exclude: ["e2e/**", "node_modules"],
-    setupFiles: ["/test/setup.ts"],
-  },
 });
