@@ -5,7 +5,7 @@ import { topGistForUser } from "~/services/gistService";
 
 const resvgConfig = {
   fitTo: {
-    mode: "width",
+    mode: ("width" as const),
     value: 600,
   },
   font: {

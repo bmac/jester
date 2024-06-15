@@ -126,7 +126,7 @@ export const createPreviewImage = ({
                                         <tspan xml:space="preserve" x="231.484375" y="178" textLength="19.859375" lengthAdjust="spacingAndGlyphs">★ </tspan>
                                     </text>
                                     <text color="rgb(218, 165, 32)" dominant-baseline="text-after-edge" font-family="Georgia, serif" font-size="16px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(218, 165, 32)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(218, 165, 32)">
-                                        <tspan xml:space="preserve" x="251.34375" y="178" textLength="8.828125" lengthAdjust="spacingAndGlyphs">${escape(stars)}</tspan>
+                                        <tspan xml:space="preserve" x="251.34375" y="178" textLength="8.828125" lengthAdjust="spacingAndGlyphs">${escape(String(stars))}</tspan>
                                     </text>
                                     <text color="rgb(218, 165, 32)" dominant-baseline="text-after-edge" font-family="Georgia, serif" font-size="16px" font-stretch="100%" font-style="normal" font-variant="normal" font-weight="400" direction="ltr" letter-spacing="normal" text-decoration="none solid rgb(218, 165, 32)" text-anchor="start" text-rendering="auto" unicode-bidi="normal" word-spacing="0px" writing-mode="horizontal-tb" user-select="auto" fill="rgb(218, 165, 32)">
                                         <tspan xml:space="preserve" x="260.171875" y="178" textLength="37.828125" lengthAdjust="spacingAndGlyphs"> stars</tspan>
