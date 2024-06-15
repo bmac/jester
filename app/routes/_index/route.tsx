@@ -3,27 +3,6 @@ import styles from "./route.module.css";
 import { Form, Link, json, redirect, useActionData } from "@remix-run/react";
 import { parseUsername } from "./parseUsername";
 
-// <!-- Primary Meta Tags -->
-// <title>Jester — Top starred gists from github</title>
-// <meta name="title" content="Jester — Top starred gists from github" />
-// <meta name="description" content="Jester shows you the most popular gists for a github user. Search your favorite developer or checkout out selection of top gisters." />
-
-// <!-- Open Graph / Facebook -->
-// <meta property="og:type" content="website" />
-// <meta property="og:url" content="https://metatags.io/" />
-// <meta property="og:title" content="Jester — Top starred gists from github" />
-// <meta property="og:description" content="Jester shows you the most popular gists for a github user. Search your favorite developer or checkout out selection of top gisters." />
-// <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
-
-// <!-- Twitter -->
-// <meta property="twitter:card" content="summary_large_image" />
-// <meta property="twitter:url" content="https://metatags.io/" />
-// <meta property="twitter:title" content="Jester — Top starred gists from github" />
-// <meta property="twitter:description" content="Jester shows you the most popular gists for a github user. Search your favorite developer or checkout out selection of top gisters." />
-// <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
-
-// <!-- Meta Tags Generated with https://metatags.io -->
-
 export const meta: MetaFunction = () => {
   const title = "Jester — Top starred gists from github";
   const description = `Jester shows you the most popular gists for a github user. Search your favorite developer or checkout out selection of top gisters.`;
