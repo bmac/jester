@@ -64,8 +64,8 @@ describe("meta", () => {
                 text: '.DS_Store',
             }]
         }] },
-        location: { pathname: '/bmac'} as Location,
-    } as MetaArgs);
+        location: { pathname: '/bmac'}
+    } as unknown as MetaArgs<typeof loader>);
 
     expect(metaTags).toMatchSnapshot();
   });
@@ -76,8 +76,8 @@ describe("meta", () => {
     const metaTags = meta({
         params: { username: 'bmac' },
         data: { topGists: [] },
-        location: { pathname: '/bmac'} as Location,
-    } as MetaArgs);
+        location: { pathname: '/bmac'}
+    } as unknown as MetaArgs<typeof loader>);
 
     expect(metaTags).toMatchSnapshot();
   });

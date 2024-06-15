@@ -8,14 +8,14 @@ describe('<Card>', () => {
     afterEach(cleanup);
     
     it('should render diamonds', () => {
-        render(<Card card="2♦" />);
+    render(<Card card="2♦" >children</Card>);
         const card = screen.getByTestId('card');
 
         expect(card).toHaveClass(styles.diamonds);
     });
 
     it('should render hearts', () => {
-        render(<Card card="Q♥" />);
+    render(<Card card="Q♥" >children</Card>);
         const card = screen.getByTestId('card');
 
         expect(card).toHaveClass(styles.hearts);
@@ -23,7 +23,7 @@ describe('<Card>', () => {
 
 
     it('should render tens', () => {
-        render(<Card card="十♦" />);
+    render(<Card card="十♦" >children</Card>);
         const card = screen.getByTestId('card');
 
         expect(card).toHaveClass(styles.ten);
@@ -31,7 +31,7 @@ describe('<Card>', () => {
 
 
     it('should render jokers', () => {
-        render(<Card card="JOKER" />);
+    render(<Card card="JOKER" >children</Card>);
         const card = screen.getByTestId('card');
 
         expect(card).toHaveClass(styles.joker);

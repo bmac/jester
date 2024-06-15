@@ -1,6 +1,6 @@
 import { escape } from "html-escaper";
 
-export const createPreviewImage = ({
+export const createPreviewSvg = ({
   username,
   filename,
   stars,

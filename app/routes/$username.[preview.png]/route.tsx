@@ -1,6 +1,6 @@
 import { Resvg } from "@resvg/resvg-js";
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { createPreviewImage } from "./createImage";
+import { createPreviewSvg } from "./createPreviewSvg";
 import { topGistForUser } from "~/services/gistService";
 
 const resvgConfig = {
@@ -23,7 +23,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const first = topGists[0];
   const filename = first?.files[0].name || "";
   const stars = first?.stargazerCount || 0;
-  const svg = createPreviewImage({
+  const svg = createPreviewSvg({
     username: params.username || "",
     filename,
     description: first?.description || "",
