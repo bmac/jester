@@ -60,7 +60,6 @@ describe("meta", () => {
             stub<Gist>({
               description: "a gitignore",
               stargazerCount: 3,
-              url: "https://example.com",
               files: [
                 stub<GistFile>({
                   name: ".gitignore",
