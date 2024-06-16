@@ -1,19 +1,17 @@
 import { graphql } from "@octokit/graphql";
 
-export type GistFile = {
-  name: string;
-  text: string;
-  language: {
-    name: string;
-  };
-};
-
 export type Gist = {
   description: string;
   stargazerCount: number;
   id: string;
   url: string;
-  files: GistFile[];
+  files: {
+    name: string;
+    text: string;
+    language: {
+      name: string;
+    };
+  }[];
 };
 
 export const getGistsForUser = async (username: string) => {
