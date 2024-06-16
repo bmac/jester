@@ -1,16 +1,45 @@
 import { escape } from "html-escaper";
+import { Resvg } from "@resvg/resvg-js";
+import { Gist } from "~/clients/githubClient";
 
-export const createPreviewSvg = ({
+const resvgConfig = {
+  fitTo: {
+    mode: "width" as const,
+    value: 600,
+  },
+  font: {
+    fontFiles: [
+      "./public/fonts/LuckiestGuy-Regular.ttf",
+      "./public/fonts/georgia.ttf",
+    ], // Load custom fonts.
+    loadSystemFonts: true, // It will be faster to disable loading system fonts.
+    defaultFontFamily: "Georgia",
+  },
+};
+
+export const createPreviewImage = (username: string, gist: Gist) => {
+  const filename = gist.files[0]?.name || "";
+
+  const svg = createPreviewSvg({
+    username,
+    filename,
+    description: gist.description,
+    stars: gist.stargazerCount,
+  });
+  const image = new Resvg(svg, resvgConfig).render();
+
+  return image.asPng();
+};
+
+const createPreviewSvg = ({
   username,
   filename,
   stars,
   description,
-  url,
 }: {
   username: string;
   filename: string;
   description: string;
-  url: string;
   stars: number;
 }) => {
   return `
@@ -113,7 +142,7 @@ export const createPreviewSvg = ({
                                 <rect width="253" height="338" x="61" y="141" fill="rgba(0, 0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-width="1px" rx="10" ry="10"/>
                             </g>
                             <g data-tag="section" id="_header_1i76z_131" class="_header_1i76z_13" data-z-index="auto" data-stacking-context="true" role="region" aria-owns="_filename_1i76z_201 _stars_1i76z_321">
-                                <a href="${escape(url)}" data-tag="a" id="_filename_1i76z_201" class="_filename_1i76z_20" data-z-index="auto" data-stacking-context="true" role="link" mask="url(#mask-for-_filename_1i76z_2011)">
+                                <a href="https://jester.codes/" data-tag="a" id="_filename_1i76z_201" class="_filename_1i76z_20" data-z-index="auto" data-stacking-context="true" role="link" mask="url(#mask-for-_filename_1i76z_2011)">
                                     <mask id="mask-for-_filename_1i76z_2011">
                                         <rect width="101.75" height="19.5" x="77" y="159.25" fill="#ffffff"/>
                                     </mask>
@@ -169,5 +198,5 @@ export const createPreviewSvg = ({
     </g>
 </svg>
 
-`.replace(/\n/gm, "");
+`;
 };

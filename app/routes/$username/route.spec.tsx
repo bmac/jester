@@ -5,7 +5,6 @@ import * as gistService from "~/services/gistService";
 import UserName, { headers as routeHeaders, loader, meta } from "./route";
 import { HeadersArgs, MetaArgs } from "@remix-run/node";
 import { render, screen } from "@testing-library/react";
-import { Location } from "@remix-run/react";
 
 const loaderArgs = {
   params: { username: "octocat" },
@@ -53,30 +52,34 @@ describe("header", () => {
 describe("meta", () => {
   it("should render social media meta tags", async () => {
     const metaTags = meta({
-        params: { username: 'bmac' },
-        data: { topGists: [{
-            description: 'a gitignore',
+      params: { username: "bmac" },
+      data: {
+        topGists: [
+          {
+            description: "a gitignore",
             stargazerCount: 3,
-            id: '',
-            url: 'https://example.com',
-            files: [{
-                name: '.gitignore',
-                text: '.DS_Store',
-            }]
-        }] },
-        location: { pathname: '/bmac'}
+            id: "",
+            url: "https://example.com",
+            files: [
+              {
+                name: ".gitignore",
+                text: ".DS_Store",
+              },
+            ],
+          },
+        ],
+      },
+      location: { pathname: "/bmac" },
     } as unknown as MetaArgs<typeof loader>);
 
     expect(metaTags).toMatchSnapshot();
   });
 
-
-
   it("should render social media meta tags when there are no gists", async () => {
     const metaTags = meta({
-        params: { username: 'bmac' },
-        data: { topGists: [] },
-        location: { pathname: '/bmac'}
+      params: { username: "bmac" },
+      data: { topGists: [] },
+      location: { pathname: "/bmac" },
     } as unknown as MetaArgs<typeof loader>);
 
     expect(metaTags).toMatchSnapshot();

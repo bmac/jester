@@ -9,7 +9,8 @@
       content-length: "362"
       content-type: application/json; charset=utf-8
       host: api.github.com
-      user-agent: octokit-graphql.js/0.0.0-development Mozilla/5.0 (X11; Darwin arm64)
+      user-agent:
+        octokit-graphql.js/0.0.0-development Mozilla/5.0 (X11; Darwin arm64)
         AppleWebKit/537.36 (KHTML, like Gecko) HappyDOM/0.0.0
     body: '{"query":"\n{\n  user(login: \"octocat\") {\n    gists(first: 100)
       {\n      nodes
@@ -21,7 +22,8 @@
     statusText: OK
     headers:
       access-control-allow-origin: "*"
-      access-control-expose-headers: ETag, Link, Location, Retry-After, X-GitHub-OTP,
+      access-control-expose-headers:
+        ETag, Link, Location, Retry-After, X-GitHub-OTP,
         X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used,
         X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
         X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type,
