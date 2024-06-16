@@ -52,26 +52,28 @@ describe("header", () => {
 
 describe("meta", () => {
   it("should render social media meta tags", async () => {
-    const metaTags = meta({
-      params: { username: "bmac" },
-      data: {
-        topGists: [
-          {
-            description: "a gitignore",
-            stargazerCount: 3,
-            id: "",
-            url: "https://example.com",
-            files: [
-              {
-                name: ".gitignore",
-                text: ".DS_Store",
-              },
-            ],
-          },
-        ],
-      },
-      location: { pathname: "/bmac" },
-    } as unknown as MetaArgs<typeof loader>);
+    const metaTags = meta(
+      stub<MetaArgs<typeof loader>>({
+        params: { username: "bmac" },
+        data: {
+          topGists: [
+            {
+              description: "a gitignore",
+              stargazerCount: 3,
+              id: "",
+              url: "https://example.com",
+              files: [
+                {
+                  name: ".gitignore",
+                  text: ".DS_Store",
+                },
+              ],
+            },
+          ],
+        },
+        location: { pathname: "/bmac" },
+      }),
+    );
 
     expect(metaTags).toMatchSnapshot();
   });
