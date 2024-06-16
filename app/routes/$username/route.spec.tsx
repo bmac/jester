@@ -1,16 +1,17 @@
 import { describe, expect, it, vi } from "vitest";
 import { createRemixStub } from "@remix-run/testing";
-import type { Gist } from "~/clients/githubClient";
+import type { Gist, GistFile } from "~/clients/githubClient";
 import * as gistService from "~/services/gistService";
 import UserName, { headers as routeHeaders, loader, meta } from "./route";
-import { HeadersArgs, MetaArgs } from "@remix-run/node";
+import { HeadersArgs, LoaderFunctionArgs, MetaArgs } from "@remix-run/node";
+import type { Location } from "@remix-run/router";
 import { render, screen } from "@testing-library/react";
+import { stub } from "test/stub";
 
-const loaderArgs = {
+const loaderArgs = stub<LoaderFunctionArgs>({
   params: { username: "octocat" },
   request: new Request("https://www.example.com"),
-  context: {},
-};
+});
 
 describe("loader", () => {
   it("should return the top gists for the username", async () => {
@@ -76,11 +77,13 @@ describe("meta", () => {
   });
 
   it("should render social media meta tags when there are no gists", async () => {
-    const metaTags = meta({
-      params: { username: "bmac" },
-      data: { topGists: [] },
-      location: { pathname: "/bmac" },
-    } as unknown as MetaArgs<typeof loader>);
+    const metaTags = meta(
+      stub<MetaArgs<typeof loader>>({
+        params: { username: "bmac" },
+        data: { topGists: [] },
+        location: stub<Location>({ pathname: "/bmac" }),
+      }),
+    );
 
     expect(metaTags).toMatchSnapshot();
   });
