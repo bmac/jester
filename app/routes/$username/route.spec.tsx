@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { createRemixStub } from "@remix-run/testing";
-import type { Gist, GistFile } from "~/clients/githubClient";
+import type { Gist } from "~/clients/githubClient";
 import * as gistService from "~/services/gistService";
 import UserName, { headers as routeHeaders, loader, meta } from "./route";
 import { HeadersArgs, LoaderFunctionArgs, MetaArgs } from "@remix-run/node";
