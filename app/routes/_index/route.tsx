@@ -76,6 +76,9 @@ export default function Index() {
             name="username"
             type="search"
             placeholder="rwaldron"
+            // The landing page is a single-purpose search form; focusing the
+            // input on load matches the user's intent and avoids an extra tab.
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
           />
         </div>
