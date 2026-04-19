@@ -10,10 +10,9 @@ import styles from "./root.module.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const params = useParams();
-  // const params = {};
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="parlor">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,20 +34,43 @@ export function Layout({ children }: { children: React.ReactNode }) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <Meta />
         <Links />
       </head>
       <body>
-        <header>
-          <a href="/" className={styles.logoLink}>
-            <span className={styles.logo}>🎭</span> Jester{" "}
+        <div className={styles.stageBg} aria-hidden />
+        <div className={styles.grain} aria-hidden />
+        <header className={styles.topbar}>
+          <a href="/" className={styles.wordmark}>
+            <span className={styles.wordmarkMark} aria-hidden>
+              <span>♠</span>
+              <span>♥</span>
+              <span>♦</span>
+              <span>♣</span>
+            </span>
+            <span className={styles.wordmarkType}>Jester</span>
           </a>
-          <span className={styles.subHeading}>
-            {params.username ? `gist stars for ${params.username}` : ``}
-          </span>
+          <div className={styles.topbarRight}>
+            {params.username ? (
+              <>
+                <span>House of</span> <b>{params.username}</b>
+              </>
+            ) : (
+              <span>Top Gists · Hand of ten</span>
+            )}
+          </div>
         </header>
-        <div className={styles.content}>{children}</div>
-        <div className={styles.background} />
+        <main className={styles.stage}>{children}</main>
         <ScrollRestoration />
         <Scripts />
       </body>

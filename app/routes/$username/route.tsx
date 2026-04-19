@@ -38,7 +38,6 @@ export const meta: MetaFunction<typeof loader> = ({
       content: description,
     },
     { property: "og:image", content: image },
-    // { property: 'twitter:card', content: image },
     { property: "twitter:url", content: url },
     { property: "twitter:title", content: title },
     { property: "twitter:description", content: description },
@@ -47,7 +46,7 @@ export const meta: MetaFunction<typeof loader> = ({
 };
 
 export const headers: HeadersFunction = () => ({
-  "Cache-Control": "public, max-age=3600, s-maxage=3600", // cache for 3 hours
+  "Cache-Control": "public, max-age=3600, s-maxage=3600",
 });
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -61,16 +60,44 @@ export async function loader({ params }: LoaderFunctionArgs) {
   }
 }
 
+const KW =
+  /\b(function|const|let|var|if|else|for|while|return|class|new|this|import|export|from|default|async|await|try|catch|throw|of|in|typeof|instanceof)\b/g;
+
+function escapeHtml(s: string) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function highlight(src: string): string[] {
+  return src.split("\n").map((line) => {
+    let s = escapeHtml(line);
+    s = s.replace(
+      /(\/\*[^*]*\*+(?:[^/*][^*]*\*+)*\/|\/\/.*$|^\s*\*.*$)/g,
+      `<span class="${styles.tkCom}">$1</span>`,
+    );
+    s = s.replace(
+      /(["'`])(?:\\.|(?!\1)[^\\])*\1/g,
+      `<span class="${styles.tkStr}">$&</span>`,
+    );
+    s = s.replace(
+      /\b(\d+(?:\.\d+)?)\b/g,
+      `<span class="${styles.tkNum}">$1</span>`,
+    );
+    s = s.replace(KW, `<span class="${styles.tkKw}">$1</span>`);
+    return s;
+  });
+}
+
 export default function UserName() {
   const { topGists } = useLoaderData<typeof loader>();
   const { username } = useParams();
+
   if (topGists.length === 0) {
     return (
-      <div className={styles.cards}>
+      <div className={styles.jokerStage}>
         <Card card={JOKER}>
           <h1>Empty Deck</h1>
           <p className={styles.p}>
-            Seems {username} doesn’t have any public gists.
+            Seems <b>{username}</b> hasn&apos;t laid down any public gists yet.
           </p>
           <p className={styles.p}>
             Want to <a href="/">search the pile</a> and draw again?
@@ -79,24 +106,60 @@ export default function UserName() {
       </div>
     );
   }
+
   return (
-    <div className={styles.cards}>
-      {topGists.map((gist, index) => (
-        <Card key={gist.id} card={CARDS[index % CARDS.length]}>
-          <section className={styles.header}>
-            <a
-              href={gist.url}
-              className={styles.filename}
-              data-testid={`card-filename-${index}`}
+    <div>
+      <div className={styles.resultsHeader}>
+        <div>
+          <h1 className={styles.resultsTitle}>
+            <em>{username}</em>&apos;s hand
+          </h1>
+          <div className={styles.resultsMeta}>
+            <span>
+              The top <b>{topGists.length}</b> gists by star count
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className={styles.cardGrid}>
+        {topGists.map((gist, index) => {
+          const lines = highlight(gist.files[0]?.text || "");
+          return (
+            <Card
+              key={gist.id}
+              card={CARDS[index % CARDS.length]}
+              dealIndex={index}
             >
-              {gist.files[0]?.name}
-            </a>
-            <span className={styles.stars}>★ {gist.stargazerCount} stars</span>
-          </section>
-          <p className={styles.description}>{gist.description}</p>
-          <pre className={styles.code}>{gist.files[0]?.text}</pre>
-        </Card>
-      ))}
+              <section className={styles.header}>
+                <a
+                  href={gist.url}
+                  className={styles.filename}
+                  data-testid={`card-filename-${index}`}
+                >
+                  {gist.files[0]?.name}
+                </a>
+                <span className={styles.stars}>★ {gist.stargazerCount}</span>
+              </section>
+              {gist.description ? (
+                <p className={styles.description}>{gist.description}</p>
+              ) : null}
+              <pre className={styles.code}>
+                <span className={styles.lnCol} aria-hidden>
+                  {lines.map((_, i) => (
+                    <span key={i} className={styles.ln}>
+                      {i + 1}
+                    </span>
+                  ))}
+                </span>
+                <span
+                  className={styles.codeCol}
+                  dangerouslySetInnerHTML={{ __html: lines.join("\n") }}
+                />
+              </pre>
+            </Card>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -104,12 +167,12 @@ export default function UserName() {
 export function ErrorBoundary() {
   const params = useParams();
   return (
-    <div className={styles.cards}>
+    <div className={styles.jokerStage}>
       <Card card={JOKER}>
         <h1>Four Oh Four</h1>
         <p className={styles.p}>
-          Oops the card for &quot;{params.username}&quot; is missing from this
-          deck.
+          Oops — the card for &quot;<b>{params.username}</b>&quot; is missing
+          from this deck.
         </p>
         <p className={styles.p}>
           Want to <a href="/">search the pile</a> and draw again?

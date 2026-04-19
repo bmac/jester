@@ -23,7 +23,6 @@ export const meta: MetaFunction = () => {
       content: description,
     },
     { property: "og:image", content: image },
-    // { property: 'twitter:card', content: image },
     { property: "twitter:url", content: url },
     { property: "twitter:title", content: title },
     { property: "twitter:description", content: description },
@@ -39,70 +38,86 @@ export const action: ActionFunction = async ({ request }) => {
   return json(result.error.flatten().fieldErrors, 400);
 };
 
+const POPULAR: { name: string; suit: "♠" | "♥" | "♦" | "♣" }[] = [
+  { name: "octocat", suit: "♦" },
+  { name: "pamelafox", suit: "♣" },
+  { name: "garybernhardt", suit: "♥" },
+  { name: "LeaVerou", suit: "♠" },
+  { name: "bmac", suit: "♦" },
+  { name: "paulirish", suit: "♣" },
+  { name: "rwaldron", suit: "♥" },
+];
+
 export default function Index() {
   const errors = useActionData<typeof action>();
   return (
-    <div className={styles.homeContainer}>
-      <h1 className={styles.h1}>Gists with Stars</h1>
-      <p className={styles.instructions}>
-        Enter a github username to find the user&apos;s most starred gists.
+    <div className={styles.home}>
+      <h1 className={styles.h1}>
+        Gists <em>with</em>
+        <br />
+        Stars.
+      </h1>
+      <p className={styles.lede}>
+        Enter a GitHub username to draw the house&apos;s best hand — their top
+        ten starred gists, dealt one card at a time.
       </p>
-      <p>{errors?.username[0]}</p>
-      <Form method="POST" target="/">
-        <label htmlFor="username" className={styles.label}>
-          Username
-        </label>
-        <input
-          id="username"
-          name="username"
-          type="search"
-          className={styles.username}
-        />
-        <button className={styles.searchButton}>
-          <span>♠</span>
-          <span>Search</span>
-          <span className={styles.flip}>♠</span>
+
+      <Form method="POST">
+        <div className={styles.searchLabel}>
+          <label htmlFor="username">GitHub Username</label>
+          <span className={styles.req}>Required</span>
+        </div>
+        <div className={styles.searchField}>
+          <span className={styles.at} aria-hidden>
+            @
+          </span>
+          <input
+            id="username"
+            name="username"
+            type="search"
+            placeholder="rwaldron"
+            autoFocus
+          />
+        </div>
+        {errors?.username?.[0] ? (
+          <p className={styles.error}>{errors.username[0]}</p>
+        ) : null}
+        <button className={styles.searchButton} type="submit">
+          <span className={styles.suit} aria-hidden>
+            ♠
+          </span>
+          <span>Deal the hand</span>
+          <span
+            className={styles.suit}
+            aria-hidden
+            style={{ transform: "rotate(180deg)" }}
+          >
+            ♠
+          </span>
         </button>
       </Form>
 
-      <h3 className={styles.popularGists}>Popular Gist Users</h3>
-      <ul className={styles.userList}>
-        <li>
-          <Link to="/octocat" prefetch="intent">
-            octocat
-          </Link>
-        </li>
-        <li>
-          <Link to="/pamelafox" prefetch="intent">
-            pamelafox
-          </Link>
-        </li>
-        <li>
-          <Link to="/garybernhardt" prefetch="intent">
-            garybernhardt
-          </Link>
-        </li>
-        <li>
-          <Link to="/LeaVerou" prefetch="intent">
-            LeaVerou
-          </Link>
-        </li>
-        <li>
-          <Link to="/bmac" prefetch="intent">
-            bmac
-          </Link>
-        </li>
-        <li>
-          <Link to="/paulirish" prefetch="intent">
-            paulirish
-          </Link>
-        </li>
-        <li>
-          <Link to="/rwaldron" prefetch="intent">
-            rwaldron
-          </Link>
-        </li>
-      </ul>
+      <div className={styles.popular}>
+        <h3 className={styles.popularTitle}>Popular gist players</h3>
+        <ul className={styles.popularGrid}>
+          {POPULAR.map(({ name, suit }) => {
+            const isRed = suit === "♥" || suit === "♦";
+            return (
+              <li key={name}>
+                <Link to={`/${name}`} prefetch="intent">
+                  <span
+                    className={`${styles.pip} ${isRed ? styles.pipRed : ""}`}
+                    aria-hidden
+                  >
+                    {suit}
+                  </span>
+                  <span>{name}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }

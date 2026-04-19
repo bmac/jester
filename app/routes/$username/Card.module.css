@@ -1,77 +1,236 @@
 .card {
-  min-height: 400px;
-  max-width: 340px;
-  width: 100%;
-  background-color: #f5f5dc;
-  background: linear-gradient(to bottom, #f2f2e6, #f5f5dc);
-  border: 1px solid #ccc;
+  aspect-ratio: 2.5 / 3.5;
+  position: relative;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
+  background: linear-gradient(160deg, var(--paper) 0%, var(--paper-2) 100%);
+  color: var(--ink);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 0 0 1px var(--paper-edge),
+    0 22px 40px -18px rgba(0, 0, 0, 0.65),
+    0 6px 14px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s;
+  will-change: transform;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid color-mix(in oklab, var(--ink) 10%, transparent);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-10px) rotate(-1.2deg) scale(1.015);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 0 0 1px var(--paper-edge),
+    0 40px 64px -22px rgba(0, 0, 0, 0.75),
+    0 10px 22px rgba(0, 0, 0, 0.4);
+}
+
+.card:nth-child(even):hover {
+  transform: translateY(-10px) rotate(1.2deg) scale(1.015);
+}
+
+.red .rank,
+.red .suitGlyph,
+.diamonds .rank,
+.diamonds .suitGlyph,
+.hearts .rank,
+.hearts .suitGlyph {
+  color: var(--red);
+}
+
+.black .rank,
+.black .suitGlyph {
+  color: var(--ink);
+}
+
+.diamonds,
+.hearts,
+.ten {
+  /* marker classes — styling handled via descendant rules */
   position: relative;
 }
 
-.cornerTopLeft {
-  font-family: cursive, sans-serif;
+.corner {
   position: absolute;
-  font-size: 24px;
-  font-weight: bold;
-  top: 5px;
-  left: 3px;
-  color: #333;
-  writing-mode: tb;
-  text-orientation: upright;
-  letter-spacing: -6px;
-  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-display);
+  line-height: 0.85;
+  z-index: 3;
+}
+
+.rank {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.suitGlyph {
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+.cornerTopLeft {
+  top: 10px;
+  left: 12px;
 }
 
 .cornerBottomRight {
-  font-family: cursive, sans-serif;
-  position: absolute;
-  font-size: 24px;
-  font-weight: bold;
-  bottom: 5px;
-  right: 3px;
+  bottom: 10px;
+  right: 12px;
   transform: rotate(180deg);
-  color: #333;
-  writing-mode: tb;
-  text-orientation: upright;
-  letter-spacing: -6px;
+}
+
+.ten .rank {
+  font-size: 19px;
+  letter-spacing: -0.04em;
+}
+
+.watermark {
+  position: absolute;
+  right: -10%;
+  bottom: -8%;
+  font-size: min(60cqw, 300px);
   line-height: 1;
+  font-family: var(--font-display);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.red .watermark {
+  color: var(--red);
 }
 
 .content {
-  border-radius: 10px;
-  border: 1px solid black;
-  flex: 1;
-  width: 100%;
-  color: black;
-  padding: 15px;
-  box-sizing: border-box;
+  position: absolute;
+  inset: 44px 22px 44px 22px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  color: var(--ink);
 }
 
-.content a {
-  color: #800000;
+@keyframes dealIn {
+  0% {
+    opacity: 0;
+    transform: translate(-120%, -220%) rotate(-18deg) scale(0.4);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
 }
 
-.content a:hover {
-  color: #a52a2a;
+.dealing {
+  animation: dealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.ten .corner {
-  letter-spacing: -2px;
-  margin-top: 8px;
+/* ——— Joker ——— */
+.joker {
+  aspect-ratio: 2.5 / 3.5;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transform: rotate(-2deg);
 }
 
-.joker .corner {
-  letter-spacing: -10px;
+.joker:hover {
+  transform: rotate(0deg) translateY(-6px);
 }
 
-.diamonds .corner,
-.hearts .corner {
-  color: #a52a2a;
+.joker .content {
+  position: static;
+  inset: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 28ch;
+}
+
+.joker .content :global(h1) {
+  font-family: var(--font-display);
+  font-size: 34px;
+  line-height: 1;
+  margin: 8px 0 4px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.joker .content :global(p) {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.joker .content :global(a) {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration-color: color-mix(in oklab, var(--red) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+.jokerHat {
+  font-family: var(--font-display);
+  font-size: 90px;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--red);
+  font-style: italic;
+  z-index: 1;
+}
+
+.jokerLabel {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  writing-mode: vertical-rl;
+  line-height: 1;
+}
+
+.joker .cornerTopLeft {
+  top: 18px;
+  left: 20px;
+  transform: rotate(180deg);
+}
+
+.joker .cornerBottomRight {
+  bottom: 18px;
+  right: 20px;
+  transform: rotate(0deg);
 }
