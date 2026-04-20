@@ -55,7 +55,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
     return json({
       topGists: await topGists,
     });
-  } catch (error) {
+  } catch {
     throw json({}, 404);
   }
 }
