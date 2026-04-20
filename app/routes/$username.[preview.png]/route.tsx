@@ -10,7 +10,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   }
   const imageBuffer = createPreviewImage(username, topGists[0]);
 
-  return new Response(imageBuffer, {
+  return new Response(new Uint8Array(imageBuffer), {
     status: 200,
     headers: {
       "Cache-Control": "public, max-age=3600, s-maxage=3600", // cache for 3 hours
