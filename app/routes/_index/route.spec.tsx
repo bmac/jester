@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import z from "zod";
+import { z } from "zod";
 import { action } from "./route";
 import * as parseUsernameModule from "./parseUsername";
 import { ActionFunctionArgs } from "@remix-run/node";

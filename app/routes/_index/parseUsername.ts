@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod";
 import zx from "zodix";
 
 export const parseUsername = async (formData: FormData) => {
