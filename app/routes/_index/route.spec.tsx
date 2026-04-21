@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { z } from "zod";
 import { action } from "./route";
 import * as parseUsernameModule from "./parseUsername";
-import { ActionFunctionArgs } from "@remix-run/node";
+import { type ActionFunctionArgs } from "react-router";
 
 describe("index action", () => {
   const request = () =>
@@ -35,7 +35,7 @@ describe("index action", () => {
     } as ActionFunctionArgs);
 
     expect(response).toMatchObject({
-      status: 400,
+      init: { status: 400 },
     });
   });
 });

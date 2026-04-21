@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { LoaderFunctionArgs } from "@remix-run/node";
+import { type LoaderFunctionArgs } from "react-router";
 import { loader } from "./route";
 import * as previewService from "./previewService";
 import * as gistService from "~/services/gistService";
