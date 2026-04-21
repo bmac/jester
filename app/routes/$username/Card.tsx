@@ -46,10 +46,7 @@ export const Card = ({ card, children, dealIndex }: CardProps) => {
 
   if (isJoker) {
     return (
-      <div
-        data-testid="card"
-        className={`${styles.card} ${styles.joker}`}
-      >
+      <div data-testid="card" className={`${styles.card} ${styles.joker}`}>
         <div className={`${styles.corner} ${styles.cornerTopLeft}`}>
           <span className={styles.jokerLabel}>JOKER</span>
         </div>

@@ -159,8 +159,7 @@ a {
     color-mix(in oklab, var(--felt-3) 92%, transparent);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-bottom: 1px solid
-    color-mix(in oklab, var(--gold) 25%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--gold) 25%, transparent);
 }
 
 .topbar::after {
@@ -170,12 +169,7 @@ a {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold) 50%,
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
   opacity: 0.7;
 }
 
