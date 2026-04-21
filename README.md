@@ -31,17 +31,17 @@ export GITHUB_TOKEN=ghp_...
 
 ## Scripts
 
-| Command            | What it does                               |
-| ------------------ | ------------------------------------------ |
-| `npm run dev`      | Start the Vite dev server                  |
-| `npm run build`    | Build for production                       |
-| `npm start`        | Run the production server from `build/`    |
-| `npm test`         | Run Vitest unit tests                      |
-| `npm run e2e`      | Run the Cucumber end-to-end suite          |
+| Command              | What it does                            |
+| -------------------- | --------------------------------------- |
+| `npm run dev`        | Start the Vite dev server               |
+| `npm run build`      | Build for production                    |
+| `npm start`          | Run the production server from `build/` |
+| `npm test`           | Run Vitest unit tests                   |
+| `npm run e2e`        | Run the Cucumber end-to-end suite       |
 | `npm run playwright` | Run Playwright browser tests            |
-| `npm run lint`     | Lint with ESLint                           |
-| `npm run typecheck`| Type-check with `tsc`                      |
-| `npm run prettier` | Format the repo with Prettier              |
+| `npm run lint`       | Lint with ESLint                        |
+| `npm run typecheck`  | Type-check with `tsc`                   |
+| `npm run prettier`   | Format the repo with Prettier           |
 
 ## Testing
 
