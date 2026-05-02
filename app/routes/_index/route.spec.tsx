@@ -28,7 +28,7 @@ describe("index action", () => {
   it("should return an error message when username is invalid", async () => {
     vi.spyOn(parseUsernameModule, "parseUsername").mockResolvedValue({
       success: false,
-      error: new z.ZodError([]),
+      error: new z.ZodError([]) as z.ZodError<{ username: string }>,
     });
     const response = await action({
       request: request(),
