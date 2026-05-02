@@ -14,11 +14,11 @@ Live site: [jester.codes](https://jester.codes)
 
 ## Getting started
 
-Requires Node 18+.
+Requires Node 24+ and [pnpm](https://pnpm.io/) (auto-installed via Corepack from the `packageManager` field in `package.json`).
 
 ```sh
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 The dev server runs at `http://localhost:3000`.
@@ -31,17 +31,17 @@ export GITHUB_TOKEN=ghp_...
 
 ## Scripts
 
-| Command              | What it does                            |
-| -------------------- | --------------------------------------- |
-| `npm run dev`        | Start the Vite dev server               |
-| `npm run build`      | Build for production                    |
-| `npm start`          | Run the production server from `build/` |
-| `npm test`           | Run Vitest unit tests                   |
-| `npm run e2e`        | Run the Cucumber end-to-end suite       |
-| `npm run playwright` | Run Playwright browser tests            |
-| `npm run lint`       | Lint with ESLint                        |
-| `npm run typecheck`  | Type-check with `tsc`                   |
-| `npm run prettier`   | Format the repo with Prettier           |
+| Command            | What it does                            |
+| ------------------ | --------------------------------------- |
+| `pnpm dev`         | Start the Vite dev server               |
+| `pnpm build`       | Build for production                    |
+| `pnpm start`       | Run the production server from `build/` |
+| `pnpm test`        | Run Vitest unit tests                   |
+| `pnpm e2e`         | Run the Cucumber end-to-end suite       |
+| `pnpm playwright`  | Run Playwright browser tests            |
+| `pnpm lint`        | Lint with ESLint                        |
+| `pnpm typecheck`   | Type-check with `tsc`                   |
+| `pnpm prettier`    | Format the repo with Prettier           |
 
 ## Testing
 
@@ -51,4 +51,4 @@ End-to-end scenarios live in `features/` (Cucumber) and `e2e/` (Playwright).
 
 ## Deployment
 
-`npm run build` emits `build/server` and `build/client`. Any Node host that can run `npm start` (`react-router-serve ./build/server/index.js`) will serve the app.
+`pnpm build` emits `build/server` and `build/client`. Any Node host that can run `pnpm start` (`react-router-serve ./build/server/index.js`) will serve the app.
