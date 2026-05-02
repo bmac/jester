@@ -1,3 +1,4 @@
+import { z } from "zod";
 import styles from "./route.module.css";
 import {
   Form,
@@ -42,9 +43,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   if (result.success) {
     return redirect(`/${result.data.username}`);
   }
-  const fieldErrors: { username?: string[] } = result.error.flatten()
-    .fieldErrors as { username?: string[] };
-  return data(fieldErrors, { status: 400 });
+  return data(z.flattenError(result.error).fieldErrors, { status: 400 });
 };
 
 const POPULAR: { name: string; suit: "♠" | "♥" | "♦" | "♣" }[] = [

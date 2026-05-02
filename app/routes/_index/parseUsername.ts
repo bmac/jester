@@ -6,7 +6,7 @@ const schema = z.object({
     .trim()
     .toLowerCase()
     .max(39)
-    .nonempty("username must contain a least 1 character")
+    .min(1, "username must contain a least 1 character")
     .regex(/^[a-zA-Z0-9]+[a-zA-Z0-9-]*$/, "username must be alphanumeric"),
 });
 
