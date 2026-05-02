@@ -1,12 +1,12 @@
 import {
+  useLoaderData,
+  useParams,
   type LoaderFunctionArgs,
-  json,
-  MetaFunction,
-  HeadersFunction,
-} from "@remix-run/node";
+  type MetaFunction,
+  type HeadersFunction,
+} from "react-router";
 import styles from "./route.module.css";
 import { topGistForUser } from "~/services/gistService";
-import { useLoaderData, useParams } from "@remix-run/react";
 import { Card, CARDS, JOKER } from "./Card";
 
 export const meta: MetaFunction<typeof loader> = ({
@@ -52,11 +52,11 @@ export const headers: HeadersFunction = () => ({
 export async function loader({ params }: LoaderFunctionArgs) {
   try {
     const topGists = topGistForUser(params.username || "");
-    return json({
+    return {
       topGists: await topGists,
-    });
+    };
   } catch {
-    throw json({}, 404);
+    throw new Response(null, { status: 404 });
   }
 }
 

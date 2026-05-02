@@ -1,10 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
-import { createRemixStub } from "@remix-run/testing";
+import {
+  createRoutesStub,
+  type HeadersArgs,
+  type LoaderFunctionArgs,
+  type MetaArgs,
+  type Location,
+} from "react-router";
 import type { Gist } from "~/clients/githubClient";
 import * as gistService from "~/services/gistService";
 import UserName, { headers as routeHeaders, loader, meta } from "./route";
-import { HeadersArgs, LoaderFunctionArgs, MetaArgs } from "@remix-run/node";
-import type { Location } from "@remix-run/router";
 import { render, screen } from "@testing-library/react";
 import { stub } from "test/stub";
 
@@ -19,9 +23,7 @@ describe("loader", () => {
     vi.spyOn(gistService, "topGistForUser").mockResolvedValue(gists);
     const response = await loader(loaderArgs);
 
-    const data = await response.json();
-
-    expect(data.topGists).toEqual(gists);
+    expect(response.topGists).toEqual(gists);
   });
 
   it("should reject with a 404 if the user name is invalid", async () => {
@@ -93,7 +95,7 @@ describe("meta", () => {
 
 describe("UserName", () => {
   it("should render the cards from the loader", async () => {
-    const RemixStub = createRemixStub([
+    const RoutesStub = createRoutesStub([
       {
         path: "/",
         Component: UserName,
@@ -111,12 +113,12 @@ describe("UserName", () => {
       },
     ]);
 
-    render(<RemixStub />);
+    render(<RoutesStub />);
     await screen.findByText("my gist");
   });
 
   it("should display a message when topGists is empty", async () => {
-    const RemixStub = createRemixStub([
+    const RoutesStub = createRoutesStub([
       {
         path: "/",
         Component: UserName,
@@ -126,7 +128,7 @@ describe("UserName", () => {
       },
     ]);
 
-    render(<RemixStub />);
+    render(<RoutesStub />);
     await screen.findByText("Empty Deck");
   });
 });

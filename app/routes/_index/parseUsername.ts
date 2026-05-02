@@ -1,14 +1,15 @@
 import { z } from "zod";
-import zx from "zodix";
+
+const schema = z.object({
+  username: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .max(39)
+    .nonempty("username must contain a least 1 character")
+    .regex(/^[a-zA-Z0-9]+[a-zA-Z0-9-]*$/, "username must be alphanumeric"),
+});
 
 export const parseUsername = async (formData: FormData) => {
-  return zx.parseFormSafe(formData, {
-    username: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .max(39)
-      .nonempty("username must contain a least 1 character")
-      .regex(/^[a-zA-Z0-9]+[a-zA-Z0-9-]*$/, "username must be alphanumeric"),
-  });
+  return schema.safeParseAsync(Object.fromEntries(formData));
 };

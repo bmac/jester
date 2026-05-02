@@ -5,7 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   useParams,
-} from "@remix-run/react";
+} from "react-router";
 import styles from "./root.module.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {

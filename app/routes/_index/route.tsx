@@ -1,6 +1,13 @@
-import type { ActionFunction, MetaFunction } from "@remix-run/node";
 import styles from "./route.module.css";
-import { Form, Link, json, redirect, useActionData } from "@remix-run/react";
+import {
+  Form,
+  Link,
+  redirect,
+  useActionData,
+  data,
+  type ActionFunctionArgs,
+  type MetaFunction,
+} from "react-router";
 import { parseUsername } from "./parseUsername";
 
 export const meta: MetaFunction = () => {
@@ -30,12 +37,14 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const action: ActionFunction = async ({ request }) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const result = await parseUsername(await request.formData());
   if (result.success) {
     return redirect(`/${result.data.username}`);
   }
-  return json(result.error.flatten().fieldErrors, 400);
+  const fieldErrors: { username?: string[] } = result.error.flatten()
+    .fieldErrors as { username?: string[] };
+  return data(fieldErrors, { status: 400 });
 };
 
 const POPULAR: { name: string; suit: "♠" | "♥" | "♦" | "♣" }[] = [

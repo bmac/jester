@@ -6,9 +6,9 @@ Live site: [jester.codes](https://jester.codes)
 
 ## Stack
 
-- [Remix](https://remix.run/) on [Vite](https://vitejs.dev/)
+- [React Router v7](https://reactrouter.com/) (framework mode) on [Vite](https://vitejs.dev/)
 - [Octokit GraphQL](https://github.com/octokit/graphql.js) for the GitHub API
-- [Zod](https://zod.dev/) + [Zodix](https://github.com/rileytomasek/zodix) for input parsing
+- [Zod](https://zod.dev/) for input parsing
 - [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/) + [Cucumber](https://github.com/cucumber/cucumber-js) for tests
 - [vcr-test](https://www.npmjs.com/package/vcr-test) to record and replay GitHub API responses
 
@@ -51,4 +51,4 @@ End-to-end scenarios live in `features/` (Cucumber) and `e2e/` (Playwright).
 
 ## Deployment
 
-`npm run build` emits `build/server` and `build/client`. Any Node host that can run `npm start` (`remix-serve ./build/server/index.js`) will serve the app.
+`npm run build` emits `build/server` and `build/client`. Any Node host that can run `npm start` (`react-router-serve ./build/server/index.js`) will serve the app.

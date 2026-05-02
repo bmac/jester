@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { type LoaderFunctionArgs } from "react-router";
 import { topGistForUser } from "~/services/gistService";
 import { createPreviewImage } from "./previewService";
 
@@ -6,7 +6,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const username = params.username || "";
   const topGists = await topGistForUser(username).catch(() => []);
   if (topGists.length === 0) {
-    return json({}, 404);
+    return new Response(null, { status: 404 });
   }
   const imageBuffer = createPreviewImage(username, topGists[0]);
 
