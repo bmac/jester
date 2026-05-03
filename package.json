@@ -65,6 +65,10 @@
   },
   "packageManager": "pnpm@10.33.2",
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "unrs-resolver"]
+    "onlyBuiltDependencies": ["esbuild", "unrs-resolver"],
+    "overrides": {
+      "@vercel/static-config>ajv": "^8.18.0",
+      "yaml@<2.8.3": "^2.8.3"
+    }
   }
 }
