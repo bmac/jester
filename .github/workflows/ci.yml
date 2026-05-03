@@ -32,8 +32,8 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # Fails on any NEW critical finding. High/moderate transitive issues
-      # (esbuild, tar, minimatch, tmp, yaml) need major upgrades and are
-      # tracked for follow-up PRs; don't break the build on them yet.
+      # Fails on any NEW critical finding. The audit currently reports
+      # zero vulnerabilities; raise the floor to "moderate" if/when we
+      # want to gate on transitive issues too.
       - name: Audit (critical only)
         run: pnpm audit --audit-level=critical
