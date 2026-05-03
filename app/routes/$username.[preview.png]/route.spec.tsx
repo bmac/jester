@@ -22,7 +22,7 @@ describe("loader", () => {
       }),
     ]);
     vi.spyOn(previewService, "createPreviewImage").mockReturnValue(
-      new Buffer(""),
+      Buffer.from(""),
     );
     const response = await loader(
       stub<LoaderFunctionArgs>({
