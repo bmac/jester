@@ -11,27 +11,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
 
       - name: Typecheck
-        run: npm run typecheck
+        run: pnpm run typecheck
 
       - name: Test
-        run: npm test -- --run
+        run: pnpm test --run
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       # Fails on any NEW critical finding. High/moderate transitive issues
       # (esbuild, tar, minimatch, tmp, yaml) need major upgrades and are
       # tracked for follow-up PRs; don't break the build on them yet.
       - name: Audit (critical only)
-        run: npm audit --audit-level=critical
+        run: pnpm audit --audit-level=critical
